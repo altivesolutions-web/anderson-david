@@ -1,0 +1,432 @@
+/* ============================================================
+   SERVICIOS — servicios.css
+   Page Hero · SV Cards · Proceso · CTA
+   ============================================================ */
+
+/* Importar home.css para el CTA banner compartido */
+/* (tokens y layout ya los carga el HTML) */
+
+/* ============================================================
+   PAGE HERO
+   ============================================================ */
+.page-hero {
+  position: relative;
+  padding-top: calc(72px + var(--sp-16));
+  padding-bottom: var(--sp-20);
+  background-color: var(--ad-navy);
+  overflow: hidden;
+}
+
+.page-hero__bg {
+  position: absolute;
+  inset: 0;
+  background-image: url('../assets/images/flota-2.jpg');
+  background-size: cover;
+  background-position: center 50%;
+  pointer-events: none;
+}
+
+.page-hero__bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    160deg,
+    rgba(10, 34, 64, 0.88) 0%,
+    rgba(10, 34, 64, 0.75) 60%,
+    rgba(10, 34, 64, 0.82) 100%
+  );
+  z-index: 1;
+}
+
+/* Líneas decorativas */
+.page-hero__bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 60px,
+    rgba(255,255,255,0.02) 60px,
+    rgba(255,255,255,0.02) 61px
+  );
+  z-index: 2;
+}
+
+.page-hero__content {
+  position: relative;
+  z-index: 3;
+}
+
+.page-hero__breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
+  color: rgba(232,243,251,0.5);
+  margin-bottom: var(--sp-5);
+}
+
+.page-hero__breadcrumb a {
+  color: rgba(232,243,251,0.5);
+  text-decoration: none;
+  transition: color var(--dur-fast);
+}
+
+.page-hero__breadcrumb a:hover {
+  color: var(--ad-white);
+}
+
+.page-hero__breadcrumb span {
+  color: rgba(232,243,251,0.9);
+}
+
+.page-hero__title {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 5vw, 4.5rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: var(--ad-white);
+  margin-bottom: var(--sp-5);
+  text-wrap: balance;
+}
+
+.page-hero__subtitle {
+  font-family: var(--font-heading);
+  font-size: clamp(var(--fs-base), 2vw, var(--fs-lg));
+  color: rgba(232,243,251,0.75);
+  max-width: 56ch;
+  line-height: 1.6;
+}
+
+
+/* ============================================================
+   SERVICIO CARDS — layout expandido
+   ============================================================ */
+.sv-card {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--sp-10);
+  align-items: start;
+  padding: var(--sp-10);
+  background: var(--ad-white);
+  border-radius: var(--r-xl);
+  border: 1px solid rgba(10,34,64,0.08);
+  margin-bottom: var(--sp-6);
+  transition: box-shadow var(--dur-base) var(--ease-out);
+}
+
+.sv-card:hover {
+  box-shadow: var(--shadow-lg);
+}
+
+.sv-card--reverse {
+  background: var(--ad-ice);
+}
+
+.sv-card__icon-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-4);
+}
+
+.sv-card__icon-wrap {
+  width: 80px;
+  height: 80px;
+  border-radius: var(--r-xl);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.sv-card__icon-wrap--navy {
+  background: linear-gradient(135deg, var(--ad-navy), var(--ad-blue));
+  color: var(--ad-white);
+}
+
+.sv-card__icon-wrap--blue {
+  background: linear-gradient(135deg, var(--ad-blue), var(--ad-sky));
+  color: var(--ad-white);
+}
+
+.sv-card__icon-wrap--amber {
+  background: linear-gradient(135deg, var(--ad-amber), #e8952f);
+  color: var(--ad-white);
+}
+
+.sv-card__icon-wrap--sky {
+  background: linear-gradient(135deg, var(--ad-sky-dark), var(--ad-sky));
+  color: var(--ad-white);
+}
+
+.sv-card__badge {
+  text-align: center;
+}
+
+.sv-card__title {
+  font-family: var(--font-display);
+  font-size: clamp(var(--fs-xl), 2.5vw, var(--fs-3xl));
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--ad-navy);
+  margin-bottom: var(--sp-4);
+  line-height: 1.1;
+}
+
+.sv-card__desc {
+  font-family: var(--font-body);
+  font-size: var(--fs-base);
+  color: var(--ad-slate);
+  line-height: 1.7;
+  max-width: 65ch;
+  margin-bottom: var(--sp-6);
+}
+
+/* Features grid dentro de card */
+.sv-card__features {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--sp-3) var(--sp-6);
+  margin-bottom: var(--sp-7);
+}
+
+.sv-feature {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
+  color: var(--ad-slate);
+  font-weight: 400;
+}
+
+.sv-feature svg {
+  color: var(--ad-sky);
+  flex-shrink: 0;
+}
+
+/* Responsive sv-cards */
+@media (max-width: 768px) {
+  .sv-card {
+    grid-template-columns: 1fr;
+    padding: var(--sp-7);
+    gap: var(--sp-6);
+  }
+
+  .sv-card__icon-col {
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .sv-card__features {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .sv-card {
+    padding: var(--sp-5);
+  }
+}
+
+
+/* ============================================================
+   PROCESO — 4 steps
+   ============================================================ */
+.proceso-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.proceso-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 100%, rgba(42,128,200,0.12) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.proceso-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--sp-6);
+  margin-top: var(--sp-12);
+  position: relative;
+}
+
+/* Línea conectora horizontal */
+.proceso-grid::before {
+  content: '';
+  position: absolute;
+  top: 32px; /* centrado con el número */
+  left: calc(var(--sp-10) + 20px);
+  right: calc(var(--sp-10) + 20px);
+  height: 1px;
+  background: linear-gradient(90deg, rgba(42,128,200,0.2), rgba(42,128,200,0.5), rgba(42,128,200,0.2));
+  z-index: 0;
+}
+
+.proceso-step {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: var(--sp-6);
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--r-xl);
+  backdrop-filter: blur(4px);
+  transition: background var(--dur-base), transform var(--dur-base) var(--ease-out);
+}
+
+.proceso-step:hover {
+  background: rgba(255,255,255,0.08);
+  transform: translateY(-4px);
+}
+
+.proceso-step__number {
+  font-family: var(--font-display);
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--ad-sky-light);
+  margin-bottom: var(--sp-4);
+  background: rgba(42,128,200,0.15);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-inline: auto;
+  margin-bottom: var(--sp-4);
+  border: 1px solid rgba(42,128,200,0.3);
+}
+
+.proceso-step__icon {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--r-lg);
+  background: linear-gradient(135deg, rgba(42,128,200,0.25), rgba(42,128,200,0.1));
+  border: 1px solid rgba(42,128,200,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ad-sky-light);
+  margin-inline: auto;
+  margin-bottom: var(--sp-5);
+}
+
+.proceso-step__title {
+  font-family: var(--font-heading);
+  font-size: var(--fs-md);
+  font-weight: 600;
+  color: var(--ad-white);
+  margin-bottom: var(--sp-3);
+  line-height: 1.3;
+}
+
+.proceso-step__desc {
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
+  color: rgba(232,243,251,0.65);
+  line-height: 1.65;
+}
+
+@media (max-width: 900px) {
+  .proceso-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .proceso-grid::before {
+    display: none;
+  }
+}
+
+@media (max-width: 500px) {
+  .proceso-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .proceso-step {
+    text-align: left;
+    display: flex;
+    align-items: flex-start;
+    gap: var(--sp-5);
+  }
+
+  .proceso-step__number {
+    margin-inline: 0;
+    flex-shrink: 0;
+  }
+
+  .proceso-step__icon {
+    display: none;
+  }
+}
+
+
+/* ============================================================
+   CTA BANNER — reutilizado de home.css
+   ============================================================ */
+.cta-banner {
+  padding-block: var(--sp-16);
+  background: linear-gradient(135deg, var(--ad-ice) 0%, #dceef9 100%);
+  border-top: 1px solid var(--ad-ice-dark);
+}
+
+.cta-banner__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-8);
+  flex-wrap: wrap;
+}
+
+.cta-banner__title {
+  font-family: var(--font-display);
+  font-size: clamp(var(--fs-xl), 3.5vw, var(--fs-3xl));
+  font-weight: 700;
+  color: var(--ad-navy);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin-bottom: var(--sp-3);
+}
+
+.cta-banner__subtitle {
+  font-family: var(--font-body);
+  font-size: var(--fs-base);
+  color: var(--ad-slate);
+  max-width: 52ch;
+  line-height: 1.6;
+}
+
+.cta-banner__actions {
+  display: flex;
+  gap: var(--sp-4);
+  flex-wrap: wrap;
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .cta-banner__inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--sp-6);
+  }
+
+  .cta-banner__actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .cta-banner__actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
