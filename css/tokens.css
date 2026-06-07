@@ -313,12 +313,12 @@ p, h1, h2, h3, h4 {
   }
 }
 
-/* Divider line */
+/* Divider line — uso reservado, no en cada sección */
 .divider {
-  width: 48px;
-  height: 3px;
-  background: linear-gradient(90deg, var(--ad-sky), var(--ad-amber));
-  border-radius: 2px;
+  width: 40px;
+  height: 2px;
+  background: var(--ad-sky);
+  border-radius: 1px;
   margin-top: var(--sp-5);
   margin-bottom: var(--sp-6);
 }

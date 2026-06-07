@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flota — Corporación Anderson David S.A.C.</title>
+  <meta name="description" content="28 unidades propias y alquiladas: volquetes, línea amarilla y camionetas de apoyo. Monitoreo GPS 24/7 en toda la flota.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://andersondavid.pe/flota.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Flota — Corporación Anderson David S.A.C.">
+  <meta property="og:description" content="28 unidades con GPS 24/7. Volquetes, línea amarilla y camionetas de apoyo para transporte de carga pesada en el norte del Perú.">
+  <meta property="og:url" content="https://andersondavid.pe/flota.html">
+  <link rel="icon" type="image/png" href="assets/logos/logo-icon.png">
+  <link rel="apple-touch-icon" href="assets/logos/logo-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow+Semi+Condensed:wght@400;600&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/flota.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar" role="banner">
+    <div class="navbar__inner">
+      <a href="index.html" class="navbar__logo" aria-label="Anderson David — Inicio">
+        <div class="navbar__logo-wrap">
+          <img src="assets/logos/logo-horizontal.png" alt="Corporación Anderson David S.A.C." width="180" height="40">
+        </div>
+      </a>
+      <nav aria-label="Navegación principal">
+        <ul class="navbar__nav">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="servicios.html">Servicios</a></li>
+          <li><a href="nosotros.html">Nosotros</a></li>
+          <li><a href="cobertura.html">Cobertura</a></li>
+          <li><a href="flota.html" class="active">Flota</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </nav>
+      <div class="navbar__cta">
+        <a href="https://wa.me/51952656820?text=Hola,%20me%20interesa%20cotizar%20un%20servicio%20de%20transporte" class="btn btn--primary" target="_blank" rel="noopener noreferrer">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Cotizar ahora
+        </a>
+      </div>
+      <button class="navbar__hamburger" aria-label="Abrir menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="navbar__drawer" aria-hidden="true">
+    <nav aria-label="Navegación móvil">
+      <ul class="navbar__drawer-nav">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="servicios.html">Servicios</a></li>
+        <li><a href="nosotros.html">Nosotros</a></li>
+        <li><a href="cobertura.html">Cobertura</a></li>
+        <li><a href="flota.html">Flota</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+    </nav>
+    <div class="navbar__drawer-cta">
+      <a href="https://wa.me/51952656820" class="btn btn--whatsapp" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+    </div>
+  </div>
+
+  <main>
+
+    <!-- 1. PAGE HERO -->
+    <section class="page-hero" aria-label="Nuestra flota">
+      <div class="page-hero__bg" aria-hidden="true"></div>
+      <div class="page-hero__bg-image"
+           style="background-image: url('assets/images/hero-flota.jpg');"
+           role="img"
+           aria-label="Flota de unidades de Corporación Anderson David"
+           fetchpriority="high">
+      </div>
+      <div class="container page-hero__content">
+        <div class="page-hero__breadcrumb" data-reveal>
+          <a href="index.html">Inicio</a>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+          <span>Flota</span>
+        </div>
+        <h1 class="page-hero__title" data-reveal data-reveal-delay="80">
+          28 unidades.<br>Cada una lista para<br>la ruta de hoy
+        </h1>
+      </div>
+    </section>
+
+    <!-- 2. COMPOSICIÓN DE FLOTA — 3 cards -->
+    <section class="section section--white" aria-labelledby="composicion-title">
+      <div class="container">
+        <h2 class="section-title" id="composicion-title" data-reveal style="margin-bottom: var(--sp-10);">
+          Composición de flota
+        </h2>
+        <div class="flota-specs-grid">
+
+          <div class="flota-spec-card" data-reveal data-reveal-delay="0">
+            <div class="flota-spec-card__num">
+              <span class="flota-spec-card__count">20</span>
+              <span class="flota-spec-card__unit">uds.</span>
+            </div>
+            <div class="flota-spec-card__body">
+              <h3 class="flota-spec-card__title">Transporte</h3>
+              <p class="flota-spec-card__subtitle">15 propias · 5 alquiladas</p>
+              <ul class="flota-spec-card__list">
+                <li>Volquetes · tractos · plataformas</li>
+                <li>Carga granel / plataforma / especial</li>
+                <li>Minería, cemento, construcción, exportación</li>
+                <li>GPS 24/7 en todas las unidades</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="flota-spec-card" data-reveal data-reveal-delay="80">
+            <div class="flota-spec-card__num">
+              <span class="flota-spec-card__count">5</span>
+              <span class="flota-spec-card__unit">uds.</span>
+            </div>
+            <div class="flota-spec-card__body">
+              <h3 class="flota-spec-card__title">Línea amarilla</h3>
+              <p class="flota-spec-card__subtitle">Maquinaria pesada propia</p>
+              <ul class="flota-spec-card__list">
+                <li>Cargador frontal · tractor oruga · retroexcavadora</li>
+                <li>Operación con operario propio incluido</li>
+                <li>Movimiento de tierra y material de mina</li>
+                <li>Disponible para servicio en obra o boca de mina</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="flota-spec-card" data-reveal data-reveal-delay="160">
+            <div class="flota-spec-card__num">
+              <span class="flota-spec-card__count">3</span>
+              <span class="flota-spec-card__unit">uds.</span>
+            </div>
+            <div class="flota-spec-card__body">
+              <h3 class="flota-spec-card__title">Apoyo</h3>
+              <p class="flota-spec-card__subtitle">Camionetas de coordinación</p>
+              <ul class="flota-spec-card__list">
+                <li>Supervisión y coordinación de ruta</li>
+                <li>Acompañamiento en cargas especiales</li>
+                <li>Inspección previa en origen y destino</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. GALERÍA EDITORIAL -->
+    <section class="section section--ice galeria-section" aria-labelledby="galeria-title">
+      <div class="container">
+        <h2 class="section-title" id="galeria-title" data-reveal style="margin-bottom: var(--sp-8);">
+          La flota en operación
+        </h2>
+
+        <!--
+          INSTRUCCIÓN PROD: Reemplazar los placeholders con las fotos reales de Drive.
+          Usar las 5-6 de mayor KB (278-353KB) para las fotos principales.
+          Convertir a WebP con cwebp CLI: cwebp -q 82 -resize 1400 0 foto.jpg -o foto.webp
+          Colocar en assets/images/ y actualizar los src abajo.
+          Alt text descriptivo por cada foto.
+        -->
+        <div class="flota-gallery" role="list">
+
+          <!-- Foto grande (2 cols) -->
+          <div class="flota-gallery__item foto-hero" role="listitem">
+            <img
+              src="assets/images/flota-01.jpg"
+              alt="Volquete de Anderson David cargado en ruta a la sierra liberteña"
+              width="900" height="506"
+              loading="eager"
+              fetchpriority="high"
+              style="width:100%;height:100%;object-fit:cover;display:block;border-radius:var(--r-lg);"
+            >
+            <div class="foto-overlay">
+              <span class="foto-overlay__tag">Flota de transporte</span>
+            </div>
+          </div>
+
+          <!-- Foto cuadrada fila 1 col 3 -->
+          <div class="flota-gallery__item foto-sq" role="listitem">
+            <img
+              src="assets/images/flota-02.jpg"
+              alt="Camión Anderson David en zona industrial El Milagro, Trujillo"
+              width="450" height="338"
+              loading="lazy"
+              style="width:100%;height:100%;object-fit:cover;display:block;border-radius:var(--r-lg);"
+            >
+          </div>
+
+          <!-- Fila 2: 3 fotos iguales -->
+          <div class="flota-gallery__item foto-sq" role="listitem">
+            <img
+              src="assets/images/flota-03.jpg"
+              alt="Cargador frontal de línea amarilla Anderson David en boca de mina"
+              width="450" height="338"
+              loading="lazy"
+              style="width:100%;height:100%;object-fit:cover;display:block;border-radius:var(--r-lg);"
+            >
+          </div>
+
+          <div class="flota-gallery__item foto-sq" role="listitem">
+            <img
+              src="assets/images/flota-04.jpg"
+              alt="Volquete en ruta serrana con carga de cemento"
+              width="450" height="338"
+              loading="lazy"
+              style="width:100%;height:100%;object-fit:cover;display:block;border-radius:var(--r-lg);"
+            >
+          </div>
+
+          <div class="flota-gallery__item foto-sq" role="listitem">
+            <img
+              src="assets/images/flota-05.jpg"
+              alt="Plataforma de carga Anderson David en puerto de Salaverry"
+              width="450" height="338"
+              loading="lazy"
+              style="width:100%;height:100%;object-fit:cover;display:block;border-radius:var(--r-lg);"
+            >
+          </div>
+
+          <!-- Fila 3: 2 fotos adicionales (opcionales) -->
+          <div class="flota-gallery__item foto-sq" role="listitem">
+            <img
+              src="assets/images/flota-06.jpg"
+              alt="Camión de carga Anderson David en zona norte de Trujillo"
+              width="450" height="338"
+              loading="lazy"
+              style="width:100%;height:100%;object-fit:cover;display:block;border-radius:var(--r-lg);"
+            >
+          </div>
+
+          <div class="flota-gallery__item foto-sq" role="listitem">
+            <img
+              src="assets/images/flota-07.jpg"
+              alt="Maquinaria de línea amarilla en operación de movimiento de tierra"
+              width="450" height="338"
+              loading="lazy"
+              style="width:100%;height:100%;object-fit:cover;display:block;border-radius:var(--r-lg);"
+            >
+          </div>
+
+        </div>
+
+        <p class="galeria-note" data-reveal>
+          Fotos reales de flota. Las imágenes se actualizan desde Google Drive con cada incorporación de unidad.
+        </p>
+      </div>
+    </section>
+
+    <!-- 4. GPS Y TECNOLOGÍA -->
+    <section class="section section--navy gps-section" aria-labelledby="gps-title">
+      <div class="container">
+        <div class="gps-grid">
+
+          <div class="gps-text" data-reveal>
+            <h2 class="gps-title" id="gps-title">Seguimiento en tiempo real</h2>
+            <ul class="gps-list">
+              <li class="gps-list__item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                Rastreo satelital activo en las 28 unidades, sin excepción.
+              </li>
+              <li class="gps-list__item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                Alertas automáticas por desvío de ruta o parada no programada.
+              </li>
+              <li class="gps-list__item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                Reporte de posición a pedido por WhatsApp o correo electrónico.
+              </li>
+            </ul>
+            <a href="contacto.html" class="btn btn--outline" style="margin-top: var(--sp-8);">
+              Preguntar sobre acceso al panel GPS
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+            </a>
+          </div>
+
+          <div class="gps-number" data-reveal data-reveal-delay="100" aria-label="Monitoreo GPS activo 24 horas al día, 7 días a la semana">
+            <span class="gps-numero" aria-hidden="true">24/7</span>
+            <span class="gps-label">Monitoreo GPS activo</span>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. CTA BANNER -->
+    <section class="cta-banner" aria-label="Contacto">
+      <div class="container">
+        <div class="cta-banner__inner" data-reveal>
+          <div class="cta-banner__text">
+            <h2 class="cta-banner__title">Coordinemos su siguiente carga</h2>
+            <p class="cta-banner__subtitle">
+              Cuéntenos el tipo de carga, origen y destino. Asignamos la unidad adecuada y le enviamos cotización.
+            </p>
+          </div>
+          <div class="cta-banner__actions">
+            <a href="https://wa.me/51952656820?text=Hola,%20quiero%20cotizar%20un%20servicio%20de%20transporte" class="btn btn--whatsapp" target="_blank" rel="noopener noreferrer">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Cotizar por WhatsApp
+            </a>
+            <a href="contacto.html" class="btn btn--outline-navy">Ver formulario</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a href="index.html" aria-label="Anderson David — Inicio"><div class="footer__logo-wrap"><img src="assets/logos/logo-horizontal.png" alt="Corporación Anderson David S.A.C." width="160" height="36"></div></a>
+          <p class="footer__tagline">28 unidades con GPS 24/7. Transporte de carga pesada en Lima, Trujillo, sierra liberteña y Piura.</p>
+          <div class="footer__social">
+            <a href="https://www.facebook.com/share/17NmHmi2Y3/" class="footer__social-link" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+            <a href="https://wa.me/51952656820" class="footer__social-link" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+          </div>
+        </div>
+        <div>
+          <p class="footer__col-title">Navegación</p>
+          <ul class="footer__links">
+            <li><a href="index.html"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>Inicio</a></li>
+            <li><a href="servicios.html"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>Servicios</a></li>
+            <li><a href="nosotros.html"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>Nosotros</a></li>
+            <li><a href="cobertura.html"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>Cobertura</a></li>
+            <li><a href="flota.html"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>Flota</a></li>
+            <li><a href="contacto.html"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>Contacto</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="footer__col-title">Contacto</p>
+          <div class="footer__contact-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.99 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.92 1.28h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2.01z"/></svg><div><a href="tel:+51952656820">952 656 820</a></div></div>
+          <div class="footer__contact-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><div><a href="mailto:corporacion.andersondavid@gmail.com">corporacion.andersondavid@gmail.com</a></div></div>
+          <div class="footer__contact-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg><div>RUC: 20602903142</div></div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p class="footer__copy">&copy; 2026 Corporación Anderson David S.A.C. Todos los derechos reservados.</p>
+        <div class="footer__legal"><span class="footer__copy" style="opacity:0.6;">Trujillo, La Libertad, Perú</span></div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>

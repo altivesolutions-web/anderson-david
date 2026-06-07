@@ -394,11 +394,4 @@
   }
 }
 
-/* ─── Links semana 2: deshabilitados temporalmente ─── */
-a.coming-soon,
-.navbar__nav a[href="#"],
-.navbar__drawer a[href="#"] {
-  opacity: 0.45;
-  cursor: default;
-  pointer-events: none;
-}
+/* ─── Todos los links de navegación activos ─── */

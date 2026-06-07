@@ -1,0 +1,338 @@
+/* ============================================================
+   FLOTA — flota.css
+   Page Hero · Specs · Galería asimétrica · GPS · CTA
+   ============================================================ */
+
+/* --- Page Hero ------------------------------------------------------------ */
+.page-hero {
+  position: relative;
+  min-height: 55vh;
+  padding-top: calc(72px + var(--sp-24));
+  padding-bottom: var(--sp-20);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.page-hero__bg {
+  position: absolute; inset: 0;
+  background: linear-gradient(160deg, rgba(10,34,64,0.78) 0%, rgba(10,34,64,0.50) 100%);
+  z-index: 1;
+}
+.page-hero__bg-image {
+  position: absolute; inset: 0;
+  background-color: var(--ad-navy);
+  background-size: cover;
+  background-position: center 30%;
+  z-index: 0;
+}
+.page-hero__content { position: relative; z-index: 2; }
+.page-hero__breadcrumb {
+  display: flex; align-items: center; gap: var(--sp-2);
+  font-size: var(--fs-sm); color: rgba(232,243,251,0.5); margin-bottom: var(--sp-5);
+}
+.page-hero__breadcrumb a { color: rgba(232,243,251,0.5); text-decoration: none; transition: color var(--dur-fast); }
+.page-hero__breadcrumb a:hover { color: var(--ad-white); }
+.page-hero__breadcrumb span { color: rgba(232,243,251,0.9); }
+.page-hero__title {
+  font-family: var(--font-display); font-size: clamp(2.2rem, 5.5vw, 4.5rem);
+  font-weight: 700; line-height: 1.0; letter-spacing: -0.03em;
+  color: var(--ad-white); text-wrap: balance;
+}
+
+
+/* --- Specs de flota ------------------------------------------------------- */
+.flota-specs-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-5);
+}
+
+.flota-spec-card {
+  border-radius: var(--r-xl);
+  border: 1px solid rgba(10,34,64,0.08);
+  background: var(--ad-white);
+  overflow: hidden;
+  transition: transform var(--dur-base) var(--ease-out), box-shadow var(--dur-base) var(--ease-out);
+}
+
+.flota-spec-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.flota-spec-card__num {
+  padding: var(--sp-6) var(--sp-7) var(--sp-4);
+  background: linear-gradient(135deg, var(--ad-navy), var(--ad-blue));
+  display: flex;
+  align-items: baseline;
+  gap: var(--sp-2);
+}
+
+.flota-spec-card__count {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 6vw, 4.5rem);
+  font-weight: 700;
+  color: var(--ad-white);
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.flota-spec-card__unit {
+  font-family: var(--font-heading);
+  font-size: var(--fs-lg);
+  font-weight: 600;
+  color: rgba(232,243,251,0.6);
+}
+
+.flota-spec-card__body {
+  padding: var(--sp-6) var(--sp-7);
+}
+
+.flota-spec-card__title {
+  font-family: var(--font-display);
+  font-size: var(--fs-2xl);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--ad-navy);
+  margin-bottom: var(--sp-1);
+}
+
+.flota-spec-card__subtitle {
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
+  color: var(--ad-sky);
+  font-weight: 600;
+  margin-bottom: var(--sp-5);
+}
+
+.flota-spec-card__list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+.flota-spec-card__list li {
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
+  color: var(--ad-slate);
+  line-height: 1.5;
+  padding-left: var(--sp-4);
+  position: relative;
+}
+
+.flota-spec-card__list li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--ad-sky);
+  font-weight: 600;
+}
+
+@media (max-width: 900px) {
+  .flota-specs-grid { grid-template-columns: 1fr; }
+  .flota-spec-card { display: flex; align-items: stretch; }
+  .flota-spec-card__num { padding: var(--sp-5) var(--sp-6); min-width: 100px; justify-content: center; flex-direction: column; }
+  .flota-spec-card__body { flex: 1; }
+}
+
+@media (max-width: 580px) {
+  .flota-spec-card { flex-direction: column; }
+  .flota-spec-card__num { flex-direction: row; align-items: baseline; gap: var(--sp-2); padding: var(--sp-5) var(--sp-6); }
+}
+
+
+/* --- Galería asimétrica -------------------------------------------------- */
+.galeria-section { }
+
+.flota-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: var(--sp-6);
+}
+
+.flota-gallery__item {
+  overflow: hidden;
+  border-radius: var(--r-lg);
+  background: var(--ad-ice); /* fallback si imagen no carga */
+  position: relative;
+}
+
+.foto-hero {
+  grid-column: 1 / 3;
+  aspect-ratio: 16 / 9;
+}
+
+.foto-sq {
+  aspect-ratio: 4 / 3;
+}
+
+.foto-overlay {
+  position: absolute;
+  bottom: var(--sp-3);
+  left: var(--sp-3);
+  pointer-events: none;
+}
+
+.foto-overlay__tag {
+  font-family: var(--font-display);
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ad-white);
+  background: rgba(10,34,64,0.65);
+  backdrop-filter: blur(4px);
+  padding: 3px 10px;
+  border-radius: var(--r-full);
+}
+
+/* Hover sutil en fotos */
+.flota-gallery__item img {
+  transition: transform 400ms var(--ease-out);
+}
+.flota-gallery__item:hover img {
+  transform: scale(1.03);
+}
+
+.galeria-note {
+  font-family: var(--font-body);
+  font-size: var(--fs-xs);
+  color: var(--ad-text-muted);
+  font-style: italic;
+  text-align: center;
+}
+
+@media (max-width: 767px) {
+  .flota-gallery {
+    grid-template-columns: 1fr 1fr;
+  }
+  .foto-hero {
+    grid-column: 1 / 3;
+  }
+}
+
+@media (max-width: 480px) {
+  .flota-gallery {
+    grid-template-columns: 1fr;
+  }
+  .foto-hero {
+    grid-column: 1;
+  }
+}
+
+
+/* --- GPS y tecnología ----------------------------------------------------- */
+.gps-section {
+  position: relative;
+  overflow: hidden;
+}
+.gps-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 80% 50%, rgba(42,128,200,0.1) 0%, transparent 55%);
+  pointer-events: none;
+}
+
+.gps-grid {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--sp-16);
+  align-items: center;
+}
+
+.gps-title {
+  font-family: var(--font-display);
+  font-size: clamp(var(--fs-2xl), 4vw, var(--fs-4xl));
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--ad-white);
+  margin-bottom: var(--sp-6);
+}
+
+.gps-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+}
+
+.gps-list__item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-3);
+  font-family: var(--font-body);
+  font-size: var(--fs-md);
+  color: rgba(232,243,251,0.8);
+  line-height: 1.55;
+}
+
+.gps-list__item svg {
+  color: var(--ad-sky-light);
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+/* El número grande 24/7 */
+.gps-number {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-3);
+  flex-shrink: 0;
+}
+
+.gps-numero {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(64px, 10vw, 96px);
+  font-weight: 700;
+  color: var(--ad-amber);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  display: block;
+}
+
+.gps-label {
+  font-family: var(--font-display);
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(232,243,251,0.5);
+  text-align: center;
+  max-width: 14ch;
+}
+
+@media (max-width: 768px) {
+  .gps-grid {
+    grid-template-columns: 1fr;
+    gap: var(--sp-10);
+  }
+  .gps-number {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--sp-5);
+    justify-content: flex-start;
+  }
+  .gps-label { max-width: none; text-align: left; }
+}
+
+
+/* --- CTA Banner ----------------------------------------------------------- */
+.cta-banner {
+  padding-block: var(--sp-16);
+  background: linear-gradient(135deg, var(--ad-ice) 0%, #dceef9 100%);
+  border-top: 1px solid var(--ad-ice-dark);
+}
+.cta-banner__inner { display: flex; align-items: center; justify-content: space-between; gap: var(--sp-8); flex-wrap: wrap; }
+.cta-banner__title { font-family: var(--font-display); font-size: clamp(var(--fs-xl), 3.5vw, var(--fs-3xl)); font-weight: 700; color: var(--ad-navy); line-height: 1.15; letter-spacing: -0.02em; margin-bottom: var(--sp-3); }
+.cta-banner__subtitle { font-family: var(--font-body); font-size: var(--fs-base); color: var(--ad-slate); max-width: 52ch; line-height: 1.6; }
+.cta-banner__actions { display: flex; gap: var(--sp-4); flex-wrap: wrap; flex-shrink: 0; }
+@media (max-width: 768px) {
+  .cta-banner__inner { flex-direction: column; align-items: flex-start; gap: var(--sp-6); }
+  .cta-banner__actions { flex-direction: column; width: 100%; }
+  .cta-banner__actions .btn { width: 100%; justify-content: center; }
+}

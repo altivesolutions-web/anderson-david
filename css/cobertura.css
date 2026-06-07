@@ -1,0 +1,328 @@
+/* ============================================================
+   COBERTURA — cobertura.css
+   Page Hero · Mapa SVG + Zonas · Tabla rutas · CTA
+   ============================================================ */
+
+/* --- Page Hero ------------------------------------------------------------ */
+.page-hero {
+  position: relative;
+  min-height: 50vh;
+  padding-top: calc(72px + var(--sp-20));
+  padding-bottom: var(--sp-20);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.page-hero__bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(160deg, rgba(10,34,64,0.80) 0%, rgba(10,34,64,0.55) 100%);
+  z-index: 1;
+}
+.page-hero__bg-image {
+  position: absolute;
+  inset: 0;
+  background-color: var(--ad-navy);
+  background-size: cover;
+  background-position: center 40%;
+  z-index: 0;
+}
+.page-hero__content { position: relative; z-index: 2; }
+.page-hero__breadcrumb {
+  display: flex; align-items: center; gap: var(--sp-2);
+  font-family: var(--font-body); font-size: var(--fs-sm);
+  color: rgba(232,243,251,0.5); margin-bottom: var(--sp-5);
+}
+.page-hero__breadcrumb a { color: rgba(232,243,251,0.5); text-decoration: none; transition: color var(--dur-fast); }
+.page-hero__breadcrumb a:hover { color: var(--ad-white); }
+.page-hero__breadcrumb span { color: rgba(232,243,251,0.9); }
+.page-hero__title {
+  font-family: var(--font-display); font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 700; line-height: 1.05; letter-spacing: -0.03em;
+  color: var(--ad-white); text-wrap: balance; margin-bottom: var(--sp-5);
+}
+.page-hero__subtitle {
+  font-family: var(--font-heading); font-size: clamp(var(--fs-base), 2vw, var(--fs-lg));
+  color: rgba(232,243,251,0.75); max-width: 56ch; line-height: 1.6;
+}
+
+/* --- Mapa + Zonas grid --------------------------------------------------- */
+.cobertura-grid {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+/* SVG Mapa */
+.map-container {
+  position: sticky;
+  top: 88px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-5);
+}
+
+.peru-map {
+  width: 100%;
+  max-width: 260px;
+}
+
+.peru-shape {
+  fill: var(--ad-ice);
+  stroke: var(--ad-sky);
+  stroke-width: 1.5;
+}
+
+.peru-coast {
+  stroke: rgba(42,128,200,0.3);
+  stroke-width: 2;
+}
+
+/* Puntos animados */
+.map-dot-outer {
+  animation: ping 2.5s cubic-bezier(0,0,0.2,1) infinite;
+}
+
+.map-pin--dev .map-dot-outer {
+  animation: none;
+}
+
+@keyframes ping {
+  0% { transform: scale(1); opacity: 0.8; }
+  75%, 100% { transform: scale(2.2); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .map-dot-outer { animation: none; }
+}
+
+.map-dot-inner {
+  transition: r var(--dur-base);
+}
+
+.map-label {
+  fill: var(--ad-ink);
+}
+.map-label--muted {
+  fill: var(--ad-text-muted);
+}
+
+.route-line {
+  stroke-linecap: round;
+}
+
+/* Leyenda */
+.map-legend {
+  display: flex;
+  gap: var(--sp-5);
+  justify-content: center;
+}
+.map-legend__item {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-family: var(--font-body);
+  font-size: var(--fs-xs);
+  color: var(--ad-slate);
+}
+.map-legend__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.map-legend__dot--sky { background: var(--ad-sky); }
+.map-legend__dot--muted { background: #9CA3AF; border: 1px dashed #6B7280; }
+
+/* Zone cards */
+.zones-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+
+.zone-card {
+  padding: var(--sp-5) var(--sp-6);
+  background: var(--ad-white);
+  border-radius: var(--r-lg);
+  border: 1px solid rgba(10,34,64,0.08);
+  transition: border-color 180ms var(--ease-out), background 180ms var(--ease-out);
+}
+
+.zone-card:hover {
+  border-color: rgba(42,128,200,0.5);
+  background: rgba(232,243,251,0.5);
+}
+
+.zone-card--dev {
+  border-style: dashed;
+  opacity: 0.75;
+}
+
+.zone-card__header {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  margin-bottom: var(--sp-2);
+}
+
+.zone-card__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.zone-card__dot--sky { background: var(--ad-sky); }
+.zone-card__dot--muted { background: #9CA3AF; }
+
+.zone-card__title {
+  font-family: var(--font-heading);
+  font-size: var(--fs-md);
+  font-weight: 600;
+  color: var(--ad-navy);
+  flex: 1;
+}
+
+.zone-card__status {
+  font-family: var(--font-display);
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #16A34A;
+  background: rgba(22,163,74,0.1);
+  padding: 2px 8px;
+  border-radius: var(--r-full);
+  white-space: nowrap;
+}
+
+.zone-card__status--dev {
+  color: var(--ad-text-muted);
+  background: rgba(107,114,128,0.1);
+}
+
+.zone-card__desc {
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
+  color: var(--ad-slate);
+  line-height: 1.55;
+  padding-left: calc(10px + var(--sp-3));
+}
+
+@media (max-width: 900px) {
+  .cobertura-grid {
+    grid-template-columns: 1fr;
+  }
+  .map-container {
+    position: static;
+    flex-direction: row;
+    align-items: flex-start;
+  }
+  .peru-map { max-width: 180px; }
+}
+
+@media (max-width: 600px) {
+  .map-container { flex-direction: column; align-items: center; }
+}
+
+/* --- Tabla de rutas ------------------------------------------------------- */
+.rutas-section { }
+
+.rutas-table-wrap {
+  overflow-x: auto;
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.rutas-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--ad-white);
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
+}
+
+.rutas-table thead {
+  background: var(--ad-navy);
+  color: var(--ad-white);
+}
+
+.rutas-table th {
+  font-family: var(--font-display);
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: var(--sp-4) var(--sp-5);
+  text-align: left;
+}
+
+.rutas-table td {
+  padding: var(--sp-4) var(--sp-5);
+  border-bottom: 1px solid rgba(10,34,64,0.07);
+  color: var(--ad-slate);
+  vertical-align: middle;
+}
+
+.rutas-table td strong {
+  color: var(--ad-navy);
+  font-family: var(--font-heading);
+  font-weight: 600;
+}
+
+.rutas-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.rutas-table tbody tr:hover td {
+  background: rgba(232,243,251,0.6);
+}
+
+.ruta-row--dev td {
+  opacity: 0.65;
+}
+
+/* Badges frecuencia */
+.freq-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: var(--r-full);
+  font-family: var(--font-display);
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.freq-badge--diario { background: rgba(42,128,200,0.12); color: var(--ad-sky-dark); }
+.freq-badge--regular { background: rgba(27,79,138,0.1); color: var(--ad-blue); }
+.freq-badge--pedido { background: rgba(217,123,42,0.12); color: var(--ad-amber); }
+.freq-badge--dev { background: rgba(107,114,128,0.1); color: var(--ad-text-muted); }
+
+.rutas-note {
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
+  color: var(--ad-text-muted);
+  margin-top: var(--sp-5);
+  line-height: 1.55;
+}
+
+/* --- CTA Banner ----------------------------------------------------------- */
+.cta-banner {
+  padding-block: var(--sp-16);
+  background: linear-gradient(135deg, var(--ad-ice) 0%, #dceef9 100%);
+  border-top: 1px solid var(--ad-ice-dark);
+}
+.cta-banner__inner { display: flex; align-items: center; justify-content: space-between; gap: var(--sp-8); flex-wrap: wrap; }
+.cta-banner__title { font-family: var(--font-display); font-size: clamp(var(--fs-xl), 3.5vw, var(--fs-3xl)); font-weight: 700; color: var(--ad-navy); line-height: 1.15; letter-spacing: -0.02em; margin-bottom: var(--sp-3); }
+.cta-banner__subtitle { font-family: var(--font-body); font-size: var(--fs-base); color: var(--ad-slate); max-width: 52ch; line-height: 1.6; }
+.cta-banner__actions { display: flex; gap: var(--sp-4); flex-wrap: wrap; flex-shrink: 0; }
+@media (max-width: 768px) {
+  .cta-banner__inner { flex-direction: column; align-items: flex-start; gap: var(--sp-6); }
+  .cta-banner__actions { flex-direction: column; width: 100%; }
+  .cta-banner__actions .btn { width: 100%; justify-content: center; }
+}

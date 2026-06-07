@@ -1,0 +1,308 @@
+/* ============================================================
+   NOSOTROS — nosotros.css
+   Page Hero · Historia + Timeline · Métricas · Clientes · CTA
+   ============================================================ */
+
+/* --- Page Hero (reutilizado base) ---------------------------------------- */
+.page-hero {
+  position: relative;
+  min-height: 50vh;
+  padding-top: calc(72px + var(--sp-20));
+  padding-bottom: var(--sp-20);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.page-hero__bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(160deg, rgba(10,34,64,0.80) 0%, rgba(10,34,64,0.60) 100%);
+  z-index: 1;
+}
+
+.page-hero__bg-image {
+  position: absolute;
+  inset: 0;
+  background-color: var(--ad-navy);
+  background-size: cover;
+  background-position: center 35%;
+  z-index: 0;
+}
+
+.page-hero__content {
+  position: relative;
+  z-index: 2;
+}
+
+.page-hero__breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
+  color: rgba(232,243,251,0.5);
+  margin-bottom: var(--sp-5);
+}
+.page-hero__breadcrumb a { color: rgba(232,243,251,0.5); text-decoration: none; transition: color var(--dur-fast); }
+.page-hero__breadcrumb a:hover { color: var(--ad-white); }
+.page-hero__breadcrumb span { color: rgba(232,243,251,0.9); }
+
+.page-hero__title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: var(--ad-white);
+  text-wrap: balance;
+}
+
+
+/* --- Historia narrativa --------------------------------------------------- */
+.about-historia {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: start;
+}
+
+.about-historia__text p {
+  font-family: var(--font-body);
+  font-size: var(--fs-md);
+  color: var(--ad-slate);
+  line-height: 1.75;
+  margin-bottom: var(--sp-5);
+  max-width: 62ch;
+}
+
+.about-historia__text p:last-child {
+  margin-bottom: 0;
+}
+
+/* Timeline */
+.about-historia__timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.timeline-item {
+  border-left: 3px solid var(--ad-sky);
+  padding: 12px 0 12px 16px;
+  position: relative;
+  transition: border-color var(--dur-base);
+}
+
+.timeline-item:hover {
+  border-color: var(--ad-amber);
+}
+
+.timeline-item--current {
+  border-color: var(--ad-amber);
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -6px;
+  top: 18px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--ad-sky);
+  border: 2px solid var(--ad-white);
+}
+
+.timeline-item--current::before {
+  background: var(--ad-amber);
+}
+
+.timeline-year {
+  font-family: monospace;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ad-blue);
+  letter-spacing: 0.05em;
+  margin-bottom: 4px;
+}
+
+.timeline-content {
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
+  color: var(--ad-slate);
+  line-height: 1.55;
+}
+
+.timeline-content strong {
+  color: var(--ad-navy);
+  font-weight: 600;
+}
+
+@media (max-width: 900px) {
+  .about-historia {
+    grid-template-columns: 1fr;
+    gap: var(--sp-10);
+  }
+}
+
+
+/* --- Banda métricas Navy -------------------------------------------------- */
+.metrics-section {
+  background-color: var(--ad-navy);
+  padding-block: var(--sp-10);
+}
+
+.metrics-bar--nosotros {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-4);
+}
+
+/* Reutiliza .metric-item, .metric-item__number, .metric-item__label, .metric-item__divider de home.css */
+.metrics-section .metric-item__number {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  color: var(--ad-white);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  display: block;
+  margin-bottom: var(--sp-2);
+}
+
+.metrics-section .metric-item__label {
+  font-family: var(--font-body);
+  font-size: var(--fs-xs);
+  color: rgba(232,243,251,0.55);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.metrics-section .metric-item__divider {
+  width: 1px;
+  height: 48px;
+  background: rgba(255,255,255,0.12);
+  flex-shrink: 0;
+}
+
+.metrics-section .metric-item {
+  text-align: center;
+  flex: 1;
+}
+
+.metrics-section .metric-item__value {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 640px) {
+  .metrics-bar--nosotros {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--sp-6) var(--sp-4);
+    padding-block: var(--sp-6);
+  }
+  .metrics-section .metric-item__divider { display: none; }
+  .metrics-section .metric-item { text-align: left; display: flex; align-items: center; gap: var(--sp-3); }
+  .metrics-section .metric-item__value { justify-content: flex-start; margin-bottom: 0; }
+  .metrics-section .metric-item__number { margin-bottom: 0; }
+}
+
+
+/* --- Clientes strip ------------------------------------------------------- */
+.clients-section {
+  text-align: center;
+}
+
+.clients-section__title {
+  font-family: var(--font-display);
+  font-size: clamp(var(--fs-xl), 3vw, var(--fs-3xl));
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--ad-navy);
+  margin-bottom: var(--sp-8);
+  text-wrap: balance;
+}
+
+.clients-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+  justify-content: center;
+  margin-bottom: var(--sp-6);
+}
+
+.client-pill {
+  background: #F4F5F7;
+  border-radius: 6px;
+  padding: 8px 16px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ad-navy);
+  border: 1px solid rgba(10,34,64,0.1);
+  transition: all var(--dur-fast);
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+}
+
+.client-pill:hover {
+  background: var(--ad-ice);
+  border-color: rgba(42,128,200,0.3);
+  color: var(--ad-blue);
+}
+
+/* Si el cliente entrega logo: dentro del pill va <img> con padding 8px 16px, min-height 40px */
+
+.clients-section__note {
+  font-size: var(--fs-xs);
+  color: var(--ad-text-muted);
+  font-style: italic;
+  display: none; /* se muestra solo en staging/interno */
+}
+
+/* --- CTA Banner (mismo que servicios.css) --------------------------------- */
+.cta-banner {
+  padding-block: var(--sp-16);
+  background: linear-gradient(135deg, var(--ad-ice) 0%, #dceef9 100%);
+  border-top: 1px solid var(--ad-ice-dark);
+}
+.cta-banner__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-8);
+  flex-wrap: wrap;
+}
+.cta-banner__title {
+  font-family: var(--font-display);
+  font-size: clamp(var(--fs-xl), 3.5vw, var(--fs-3xl));
+  font-weight: 700;
+  color: var(--ad-navy);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin-bottom: var(--sp-3);
+}
+.cta-banner__subtitle {
+  font-family: var(--font-body);
+  font-size: var(--fs-base);
+  color: var(--ad-slate);
+  max-width: 52ch;
+  line-height: 1.6;
+}
+.cta-banner__actions {
+  display: flex;
+  gap: var(--sp-4);
+  flex-wrap: wrap;
+  flex-shrink: 0;
+}
+@media (max-width: 768px) {
+  .cta-banner__inner { flex-direction: column; align-items: flex-start; gap: var(--sp-6); }
+  .cta-banner__actions { flex-direction: column; width: 100%; }
+  .cta-banner__actions .btn { width: 100%; justify-content: center; }
+}
