@@ -41,26 +41,30 @@
 }
 
 .navbar__logo-wrap {
-  background-color: rgba(255,255,255,0.96);
+  background-color: transparent;
   border-radius: var(--r-md);
-  padding: 0.3rem 0.75rem;
+  padding: 0.2rem;
   display: flex;
   align-items: center;
-  transition: background-color var(--dur-base);
+  transition: opacity var(--dur-base);
+}
+
+.navbar__logo-wrap:hover {
+  opacity: 0.85;
 }
 
 .navbar.scrolled .navbar__logo-wrap {
   background-color: transparent;
-  padding: 0;
+  padding: 0.2rem;
 }
 
 .navbar__logo img {
-  height: 40px;
+  height: 36px;
   width: auto;
 }
 
 .navbar.scrolled .navbar__logo img {
-  /* en fondo blanco el logo ya se ve bien */
+  filter: none;
 }
 
 /* Nav links */
