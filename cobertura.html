@@ -11,8 +11,8 @@
   <meta property="og:title" content="Cobertura — Corporación Anderson David S.A.C.">
   <meta property="og:description" content="Lima, Trujillo, Sierra Liberteña y Piura. Rutas regulares con GPS 24/7.">
   <meta property="og:url" content="https://andersondavid.pe/cobertura.html">
-  <link rel="icon" type="image/png" href="assets/logos/logo-icon.png">
-  <link rel="apple-touch-icon" href="assets/logos/logo-icon.png">
+  <link rel="icon" type="image/png" href="assets/logos/logo-icon-nobg.png">
+  <link rel="apple-touch-icon" href="assets/logos/logo-icon-nobg.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow+Semi+Condensed:wght@400;600&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
@@ -94,59 +94,122 @@
       <div class="container">
         <div class="cobertura-grid">
 
-          <!-- SVG mapa Perú esquemático -->
+          <!-- SVG mapa Perú — v2 Ag.6 · forma geográfica mejorada -->
           <div class="map-container" data-reveal aria-label="Mapa esquemático de cobertura en Perú">
-            <svg class="peru-map" viewBox="0 0 280 520" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Mapa de Perú con zonas de operación destacadas">
-              <!-- Silueta simplificada de Perú -->
-              <path class="peru-shape" d="M90 20 L120 15 L145 22 L165 18 L185 30 L195 50 L200 75 L205 95 L210 115 L215 140 L220 160 L225 185 L228 210 L230 235 L228 260 L225 280 L220 300 L215 320 L210 340 L200 360 L190 375 L180 390 L170 405 L160 420 L148 432 L135 440 L122 445 L110 440 L100 430 L90 418 L82 405 L75 390 L70 375 L65 358 L62 340 L60 320 L58 300 L58 280 L60 260 L62 240 L65 218 L68 195 L70 170 L72 145 L75 120 L78 95 L80 70 L82 50 L86 32 Z"/>
 
-              <!-- Línea de costa simplificada (decorativa) -->
-              <path class="peru-coast" d="M145 22 L165 18 L185 30 L195 50 L200 75 L205 95"/>
+            <div class="cobertura-map-wrapper">
+              <svg
+                viewBox="0 0 240 340"
+                width="100%"
+                style="max-width:260px; display:block;"
+                xmlns="http://www.w3.org/2000/svg"
+                role="img"
+                aria-label="Mapa esquemático de Perú con zonas de cobertura Anderson David">
 
-              <!-- Punto Piura -->
-              <g class="map-pin" transform="translate(155, 68)">
-                <circle class="map-dot-outer" r="10" fill="rgba(42,128,200,0.15)"/>
-                <circle class="map-dot-inner" r="5" fill="#2A80C8"/>
-                <text class="map-label" x="14" y="4" font-family="'Barlow Semi Condensed', sans-serif" font-size="10" fill="#0A2240" font-weight="600">Piura</text>
-              </g>
+                <title>Mapa de cobertura — Anderson David S.A.C.</title>
+                <desc>Perú con marcadores activos en Piura, Trujillo, Sierra Liberteña y Lima. Zona en desarrollo: sur del país.</desc>
 
-              <!-- Punto Trujillo -->
-              <g class="map-pin" transform="translate(148, 185)">
-                <circle class="map-dot-outer" r="12" fill="rgba(42,128,200,0.15)"/>
-                <circle class="map-dot-inner" r="6" fill="#2A80C8"/>
-                <text class="map-label" x="16" y="4" font-family="'Barlow Semi Condensed', sans-serif" font-size="10" fill="#0A2240" font-weight="600">Trujillo</text>
-              </g>
+                <path
+                  id="peru-outline"
+                  d="
+                    M 68 8
+                    C 72 6, 80 5, 88 7
+                    C 96 9, 104 10, 110 8
+                    C 116 6, 122 5, 126 8
+                    C 130 11, 132 16, 130 22
+                    C 128 28, 124 32, 120 36
+                    C 116 40, 112 42, 114 48
+                    C 116 54, 124 56, 128 62
+                    C 132 68, 130 76, 124 82
+                    C 118 88, 110 90, 106 96
+                    C 102 102, 104 110, 108 116
+                    C 112 122, 116 126, 114 132
+                    C 112 138, 106 140, 102 144
+                    C 98 148, 96 154, 92 160
+                    C 88 166, 80 170, 76 176
+                    C 72 182, 72 190, 70 198
+                    C 68 206, 64 212, 62 220
+                    C 60 228, 62 236, 66 242
+                    C 70 248, 76 252, 78 258
+                    C 80 264, 78 272, 74 278
+                    C 70 284, 64 288, 62 294
+                    C 60 300, 64 308, 70 312
+                    C 76 316, 84 316, 90 314
+                    C 96 312, 102 308, 108 306
+                    C 114 304, 122 304, 130 302
+                    C 138 300, 146 296, 152 290
+                    C 158 284, 162 276, 164 268
+                    C 166 260, 164 252, 162 244
+                    C 160 236, 158 228, 160 220
+                    C 162 212, 168 206, 172 200
+                    C 176 194, 178 186, 176 178
+                    C 174 170, 168 164, 170 156
+                    C 172 148, 180 144, 184 138
+                    C 188 132, 188 124, 184 118
+                    C 180 112, 172 108, 172 100
+                    C 172 92, 178 86, 180 80
+                    C 182 74, 180 66, 174 62
+                    C 168 58, 158 58, 152 54
+                    C 146 50, 142 44, 140 38
+                    C 138 32, 138 24, 134 18
+                    C 130 12, 122 8, 114 6
+                    C 106 4, 96 4, 88 6
+                    Z
+                  "
+                  fill="#E8F3FB"
+                  stroke="#2A80C8"
+                  stroke-width="1.5"
+                />
 
-              <!-- Punto Sierra Liberteña -->
-              <g class="map-pin" transform="translate(170, 215)">
-                <circle class="map-dot-outer" r="9" fill="rgba(42,128,200,0.12)"/>
-                <circle class="map-dot-inner" r="4.5" fill="#1B4F8A"/>
-                <text class="map-label map-label--sm" x="12" y="3" font-family="'Barlow Semi Condensed', sans-serif" font-size="8.5" fill="#374151">Sierra Lib.</text>
-              </g>
+                <!-- Líneas de ruta -->
+                <line x1="80"  y1="44"  x2="76"  y2="76"  stroke="#2A80C8" stroke-width="1" stroke-dasharray="3 3" opacity="0.3"/>
+                <line x1="76"  y1="76"  x2="108" y2="88"  stroke="#2A80C8" stroke-width="1" stroke-dasharray="3 3" opacity="0.3"/>
+                <line x1="76"  y1="76"  x2="72"  y2="210" stroke="#2A80C8" stroke-width="1" stroke-dasharray="3 3" opacity="0.3"/>
+                <line x1="72"  y1="210" x2="120" y2="290" stroke="#2A80C8" stroke-width="1" stroke-dasharray="3 3" opacity="0.2"/>
 
-              <!-- Punto Lima -->
-              <g class="map-pin" transform="translate(118, 320)">
-                <circle class="map-dot-outer" r="14" fill="rgba(42,128,200,0.12)"/>
-                <circle class="map-dot-inner" r="7" fill="#2A80C8"/>
-                <text class="map-label" x="18" y="4" font-family="'Barlow Semi Condensed', sans-serif" font-size="10" fill="#0A2240" font-weight="600">Lima</text>
-              </g>
+                <!-- PIURA -->
+                <g class="map-point" id="map-piura">
+                  <circle class="map-dot-outer" cx="80" cy="44" r="9" fill="#2A80C8" opacity="0.0" style="transform-origin:80px 44px;"/>
+                  <circle cx="80" cy="44" r="5" fill="#2A80C8" opacity="0.25"/>
+                  <circle cx="80" cy="44" r="3" fill="#2A80C8"/>
+                  <text x="90" y="48" font-size="10" font-weight="500" font-family="'Source Sans 3', Arial, sans-serif" fill="#0A2240">Piura</text>
+                </g>
 
-              <!-- Punto Sur en desarrollo -->
-              <g class="map-pin map-pin--dev" transform="translate(115, 420)">
-                <circle class="map-dot-outer" r="9" fill="rgba(107,114,128,0.12)"/>
-                <circle class="map-dot-inner" r="4" fill="#9CA3AF" stroke="#6B7280" stroke-width="1" stroke-dasharray="3,2"/>
-                <text class="map-label map-label--muted" x="12" y="3" font-family="'Barlow Semi Condensed', sans-serif" font-size="8" fill="#9CA3AF">Sur (dev)</text>
-              </g>
+                <!-- TRUJILLO -->
+                <g class="map-point" id="map-trujillo">
+                  <circle class="map-dot-outer" cx="76" cy="76" r="9" fill="#2A80C8" opacity="0.0" style="transform-origin:76px 76px; animation-delay:0.4s;"/>
+                  <circle cx="76" cy="76" r="5" fill="#2A80C8" opacity="0.25"/>
+                  <circle cx="76" cy="76" r="3" fill="#2A80C8"/>
+                  <text x="86" y="80" font-size="10" font-weight="500" font-family="'Source Sans 3', Arial, sans-serif" fill="#0A2240">Trujillo</text>
+                </g>
 
-              <!-- Línea de ruta Lima-Trujillo -->
-              <line class="route-line" x1="122" y1="320" x2="152" y2="191" stroke="#2A80C8" stroke-width="1.5" stroke-dasharray="5,3" opacity="0.5"/>
+                <!-- SIERRA LIBERTEÑA -->
+                <g class="map-point" id="map-sierra">
+                  <circle class="map-dot-outer" cx="108" cy="88" r="8" fill="#2A80C8" opacity="0.0" style="transform-origin:108px 88px; animation-delay:0.7s;"/>
+                  <circle cx="108" cy="88" r="4" fill="#2A80C8" opacity="0.2"/>
+                  <circle cx="108" cy="88" r="2.5" fill="#4DAAEF"/>
+                  <text x="115" y="92" font-size="9" font-family="'Source Sans 3', Arial, sans-serif" fill="#1B4F8A" opacity="0.9">Sierra LL</text>
+                </g>
 
-              <!-- Línea de ruta Trujillo-Piura -->
-              <line class="route-line" x1="152" y1="185" x2="158" y2="78" stroke="#2A80C8" stroke-width="1.5" stroke-dasharray="5,3" opacity="0.5"/>
+                <!-- LIMA -->
+                <g class="map-point" id="map-lima">
+                  <circle class="map-dot-outer" cx="72" cy="210" r="10" fill="#2A80C8" opacity="0.0" style="transform-origin:72px 210px; animation-delay:0.9s;"/>
+                  <circle cx="72" cy="210" r="6" fill="#2A80C8" opacity="0.25"/>
+                  <circle cx="72" cy="210" r="3.5" fill="#2A80C8"/>
+                  <text x="82" y="214" font-size="10" font-weight="500" font-family="'Source Sans 3', Arial, sans-serif" fill="#0A2240">Lima</text>
+                </g>
 
-              <!-- Línea de ruta Trujillo-Sierra -->
-              <line class="route-line" x1="152" y1="191" x2="174" y2="218" stroke="#1B4F8A" stroke-width="1" stroke-dasharray="4,3" opacity="0.4"/>
-            </svg>
+                <!-- SUR — en desarrollo -->
+                <g class="map-point map-point--dev" id="map-sur" opacity="0.72">
+                  <circle cx="120" cy="290" r="8" fill="rgba(55,65,81,0.3)" stroke="rgba(55,65,81,0.55)" stroke-width="1.2" stroke-dasharray="2.5 2"/>
+                  <circle cx="120" cy="290" r="3" fill="rgba(55,65,81,0.55)"/>
+                  <text x="130" y="294" font-size="9" font-family="'Source Sans 3', Arial, sans-serif" fill="#374151">Sur*</text>
+                </g>
+
+                <text x="120" y="332" text-anchor="middle" font-size="8.5" font-family="'Source Sans 3', Arial, sans-serif" fill="rgba(10,34,64,0.4)">* proyecto en desarrollo</text>
+
+              </svg>
+            </div>
 
             <div class="map-legend">
               <div class="map-legend__item">

@@ -213,57 +213,98 @@
 }
 
 
-/* --- Clientes strip ------------------------------------------------------- */
-.clients-section {
+/* --- Clientes logo rail v2 ------------------------------------------------ */
+.clientes {
+  padding: 64px 0;
+  background: #FAFBFC;
   text-align: center;
 }
 
-.clients-section__title {
+.clientes .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.clientes-eyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: #9CA3AF;
+  margin: 0 0 8px;
+}
+
+.clientes-titulo {
   font-family: var(--font-display);
-  font-size: clamp(var(--fs-xl), 3vw, var(--fs-3xl));
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  color: var(--ad-navy);
-  margin-bottom: var(--sp-8);
-  text-wrap: balance;
-}
-
-.clients-strip {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--sp-2);
-  justify-content: center;
-  margin-bottom: var(--sp-6);
-}
-
-.client-pill {
-  background: #F4F5F7;
-  border-radius: 6px;
-  padding: 8px 16px;
-  font-family: var(--font-body);
-  font-size: 13px;
+  font-size: 26px;
   font-weight: 600;
   color: var(--ad-navy);
-  border: 1px solid rgba(10,34,64,0.1);
-  transition: all var(--dur-fast);
-  min-height: 40px;
+  letter-spacing: -.01em;
+  margin: 0 0 36px;
+}
+
+.logo-rail {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  border-top: 0.5px solid rgba(26,79,138,.12);
+  border-bottom: 0.5px solid rgba(26,79,138,.12);
+  padding: 4px 0;
+}
+
+.logo-item {
   display: flex;
   align-items: center;
+  justify-content: center;
+  padding: 12px 28px;
+  height: 72px;
+  border-right: 0.5px solid rgba(26,79,138,.12);
+  opacity: .5;
+  filter: grayscale(1);
+  transition: opacity 220ms cubic-bezier(.23,1,.32,1),
+              filter  220ms cubic-bezier(.23,1,.32,1);
 }
 
-.client-pill:hover {
-  background: var(--ad-ice);
-  border-color: rgba(42,128,200,0.3);
-  color: var(--ad-blue);
+.logo-item:last-child {
+  border-right: none;
 }
 
-/* Si el cliente entrega logo: dentro del pill va <img> con padding 8px 16px, min-height 40px */
+.logo-item:hover {
+  opacity: 1;
+  filter: grayscale(0);
+}
 
-.clients-section__note {
-  font-size: var(--fs-xs);
-  color: var(--ad-text-muted);
-  font-style: italic;
-  display: none; /* se muestra solo en staging/interno */
+.logo-item svg {
+  display: block;
+  height: 44px;
+  width: auto;
+}
+
+@media (max-width: 767px) {
+  .logo-item {
+    padding: 10px 16px;
+    height: 60px;
+    border-right: none;
+    border-bottom: 0.5px solid rgba(26,79,138,.12);
+    width: 50%;
+  }
+  .logo-item:nth-child(odd) {
+    border-right: 0.5px solid rgba(26,79,138,.12);
+  }
+  .logo-item:last-child {
+    border-bottom: none;
+    border-right: none;
+    width: 100%;
+  }
+  .logo-item svg {
+    height: 38px;
+  }
+  .clientes-titulo {
+    font-size: 22px;
+  }
 }
 
 /* --- CTA Banner (mismo que servicios.css) --------------------------------- */
