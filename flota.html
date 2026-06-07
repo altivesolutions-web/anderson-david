@@ -91,62 +91,102 @@
       </div>
     </section>
 
-    <!-- 2. COMPOSICIÓN DE FLOTA — 3 cards -->
-    <section class="section section--white" aria-labelledby="composicion-title">
+    <!-- 2. COMPOSICIÓN DE FLOTA — v2 -->
+    <section class="flota-composicion" aria-labelledby="flota-comp-titulo">
       <div class="container">
-        <h2 class="section-title" id="composicion-title" data-reveal style="margin-bottom: var(--sp-10);">
-          Composición de flota
-        </h2>
-        <div class="flota-specs-grid">
+        <h2 id="flota-comp-titulo" class="section-title" data-reveal>Composición de flota</h2>
+        <p class="section-sub" data-reveal data-reveal-delay="60">28 unidades operativas en tres categorías</p>
 
-          <div class="flota-spec-card" data-reveal data-reveal-delay="0">
-            <div class="flota-spec-card__num">
-              <span class="flota-spec-card__count">20</span>
-              <span class="flota-spec-card__unit">uds.</span>
+        <div class="fc-grid">
+
+          <div class="fc-card" data-reveal data-reveal-delay="0">
+            <span class="fc-accent fc-accent--sky"></span>
+            <p class="fc-label">Transporte</p>
+            <p class="fc-title">20 unidades</p>
+            <p class="fc-count"><strong>15 propias</strong> + 5 alquiladas</p>
+            <div class="fc-divider"></div>
+            <div class="fc-row">
+              <svg class="fc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 3h15v13H1zM16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+              <div>
+                <p class="fc-spec-key">Tipos de unidad</p>
+                <p class="fc-spec-val">Volquetes · Tractos · Plataformas</p>
+              </div>
             </div>
-            <div class="flota-spec-card__body">
-              <h3 class="flota-spec-card__title">Transporte</h3>
-              <p class="flota-spec-card__subtitle">15 propias · 5 alquiladas</p>
-              <ul class="flota-spec-card__list">
-                <li>Volquetes · tractos · plataformas</li>
-                <li>Carga granel / plataforma / especial</li>
-                <li>Minería, cemento, construcción, exportación</li>
-                <li>GPS 24/7 en todas las unidades</li>
-              </ul>
+            <div class="fc-row">
+              <svg class="fc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+              <div>
+                <p class="fc-spec-key">Tipo de carga</p>
+                <p class="fc-spec-val">Granel · Plataforma · Especial</p>
+              </div>
             </div>
+            <div class="fc-row">
+              <svg class="fc-icon fc-icon--sky" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+              <div>
+                <p class="fc-spec-key">Monitoreo</p>
+                <p class="fc-spec-val">GPS 24/7 en todas las unidades</p>
+              </div>
+            </div>
+            <span class="fc-badge fc-badge--sky">Flota principal</span>
           </div>
 
-          <div class="flota-spec-card" data-reveal data-reveal-delay="80">
-            <div class="flota-spec-card__num">
-              <span class="flota-spec-card__count">5</span>
-              <span class="flota-spec-card__unit">uds.</span>
+          <div class="fc-card" data-reveal data-reveal-delay="80">
+            <span class="fc-accent fc-accent--amber"></span>
+            <p class="fc-label">Línea amarilla</p>
+            <p class="fc-title">5 unidades</p>
+            <p class="fc-count"><strong>5 propias</strong> · operario incluido</p>
+            <div class="fc-divider"></div>
+            <div class="fc-row">
+              <svg class="fc-icon fc-icon--amber" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-4 0v2M8 11h8"/></svg>
+              <div>
+                <p class="fc-spec-key">Equipos</p>
+                <p class="fc-spec-val">Cargador frontal · Tractor oruga · Retroexcavadora</p>
+              </div>
             </div>
-            <div class="flota-spec-card__body">
-              <h3 class="flota-spec-card__title">Línea amarilla</h3>
-              <p class="flota-spec-card__subtitle">Maquinaria pesada propia</p>
-              <ul class="flota-spec-card__list">
-                <li>Cargador frontal · tractor oruga · retroexcavadora</li>
-                <li>Operación con operario propio incluido</li>
-                <li>Movimiento de tierra y material de mina</li>
-                <li>Disponible para servicio en obra o boca de mina</li>
-              </ul>
+            <div class="fc-row">
+              <svg class="fc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              <div>
+                <p class="fc-spec-key">Operación</p>
+                <p class="fc-spec-val">Con operario calificado propio</p>
+              </div>
             </div>
+            <div class="fc-row">
+              <svg class="fc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.06 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 8.91"/></svg>
+              <div>
+                <p class="fc-spec-key">Uso</p>
+                <p class="fc-spec-val">Minería · Movimiento de tierra · Obra</p>
+              </div>
+            </div>
+            <span class="fc-badge fc-badge--amber">Maquinaria pesada</span>
           </div>
 
-          <div class="flota-spec-card" data-reveal data-reveal-delay="160">
-            <div class="flota-spec-card__num">
-              <span class="flota-spec-card__count">3</span>
-              <span class="flota-spec-card__unit">uds.</span>
+          <div class="fc-card" data-reveal data-reveal-delay="160">
+            <span class="fc-accent fc-accent--gray"></span>
+            <p class="fc-label">Apoyo</p>
+            <p class="fc-title">3 camionetas</p>
+            <p class="fc-count"><strong>Flota de soporte</strong> logístico</p>
+            <div class="fc-divider"></div>
+            <div class="fc-row">
+              <svg class="fc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v3"/><rect x="9" y="11" width="14" height="10" rx="1"/><circle cx="12" cy="21" r="1"/><circle cx="20" cy="21" r="1"/></svg>
+              <div>
+                <p class="fc-spec-key">Tipo</p>
+                <p class="fc-spec-val">Camionetas pick-up</p>
+              </div>
             </div>
-            <div class="flota-spec-card__body">
-              <h3 class="flota-spec-card__title">Apoyo</h3>
-              <p class="flota-spec-card__subtitle">Camionetas de coordinación</p>
-              <ul class="flota-spec-card__list">
-                <li>Supervisión y coordinación de ruta</li>
-                <li>Acompañamiento en cargas especiales</li>
-                <li>Inspección previa en origen y destino</li>
-              </ul>
+            <div class="fc-row">
+              <svg class="fc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <div>
+                <p class="fc-spec-key">Función</p>
+                <p class="fc-spec-val">Coordinación y supervisión de ruta</p>
+              </div>
             </div>
+            <div class="fc-row">
+              <svg class="fc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              <div>
+                <p class="fc-spec-key">Alcance</p>
+                <p class="fc-spec-val">Soporte en campo · todas las zonas activas</p>
+              </div>
+            </div>
+            <span class="fc-badge fc-badge--gray">Soporte de campo</span>
           </div>
 
         </div>
