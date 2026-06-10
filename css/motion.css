@@ -1,0 +1,534 @@
+/*
+  ============================================================
+  ANDERSON DAVID S.A.C. — Capa de animación
+  Ag.6 UI/UX · Altive Solutions · 07/06/2026
+
+  Weighting: Jakub Krehel (primary) · Jhey Tompkins (secondary)
+             Emil Kowalski (nav, high-freq interactions)
+
+  Importar en <head> DESPUÉS de main.css:
+    <link rel="stylesheet" href="css/motion.css">
+
+  ÍNDICE:
+  0.  Tokens de motion
+  1.  Hero — entrada orquestada
+  2.  Navbar — blur al scroll
+  3.  Metric bar — spring enter + counter
+  4.  Service cards — borde perimetral animado
+  5.  Diferenciadores — stagger pronunciado
+  6.  CTA banner — tratamiento estático mejorado (ver nota)
+  7.  Flota — galería reveal escalonado
+  8.  Nosotros — timeline reveal
+  9.  Cobertura — mapa puntos secuenciales
+  10. Accessibility — prefers-reduced-motion (GLOBAL, obligatorio)
+  ============================================================
+*/
+
+
+/* ─── 0. TOKENS DE MOTION ────────────────────────────────── */
+
+:root {
+  /* Curvas — nunca usar bare ease/ease-in-out en animaciones */
+  --ease-out-quart:  cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-out-expo:   cubic-bezier(0.16, 1, 0.3, 1);
+  --spring-snappy:   cubic-bezier(0.34, 1.56, 0.64, 1);  /* leve overshoot — industrial, no playful */
+  --spring-smooth:   cubic-bezier(0.22, 1, 0.36, 1);     /* sin overshoot — para elementos grandes */
+
+  /* Duraciones base */
+  --dur-xs:   120ms;
+  --dur-sm:   200ms;
+  --dur-md:   340ms;
+  --dur-lg:   480ms;
+  --dur-hero: 560ms;
+
+  /* Stagger increments */
+  --stagger-hero: 80ms;
+  --stagger-diff: 100ms;
+  --stagger-gal:  60ms;
+  --stagger-map:  300ms;
+}
+
+
+/* ─── 1. HERO — ENTRADA ORQUESTADA ──────────────────────── */
+/*
+  Archivo: css/home.css (o el CSS de index.html)
+  Selector padre: .hero-content (contenedor del texto del hero)
+
+  Qué hace: cada hijo entra con opacity + translateY + blur en secuencia.
+  Jakub: blur como señal de materialización, no solo fade.
+  Los delays se asignan via data-attr para que JS no tenga que tocarlos.
+
+  HTML esperado:
+    <div class="hero-content">
+      <span class="hero-badge" data-hero-item="0">GPS 24/7</span>
+      <h1 class="hero-h1" data-hero-item="1">Carga Pesada...</h1>
+      <p class="hero-sub" data-hero-item="2">21 unidades...</p>
+      <div class="hero-cta" data-hero-item="3">...</div>
+    </div>
+*/
+
+[data-hero-item] {
+  opacity: 0;
+  transform: translateY(14px);
+  filter: blur(4px);
+  animation: hero-reveal var(--dur-hero) var(--ease-out-expo) forwards;
+  animation-fill-mode: both; /* retiene estado inicial ANTES de que empiece */
+}
+
+[data-hero-item="0"] { animation-delay: calc(var(--stagger-hero) * 0); }
+[data-hero-item="1"] { animation-delay: calc(var(--stagger-hero) * 1); }
+[data-hero-item="2"] { animation-delay: calc(var(--stagger-hero) * 2); }
+[data-hero-item="3"] { animation-delay: calc(var(--stagger-hero) * 3); }
+
+@keyframes hero-reveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0px);
+  }
+}
+
+
+/* ─── 2. NAVBAR — BLUR AL SCROLL ────────────────────────── */
+/*
+  Archivo: css/main.css o css/navbar.css
+  JS necesario: añadir clase .is-scrolled al <nav> o <header>
+  (ver main.js patch más abajo — sección JS)
+
+  Emil: transición sub-300ms — la nav es alta frecuencia (scroll constante).
+  La barra no "anima" cada vez — solo transiciona al cruzar el umbral.
+*/
+
+.site-nav {
+  transition:
+    background-color var(--dur-sm) var(--ease-out-quart),
+    backdrop-filter  var(--dur-sm) var(--ease-out-quart),
+    box-shadow       var(--dur-sm) var(--ease-out-quart);
+}
+
+.site-nav.is-scrolled {
+  background-color: rgba(255, 255, 255, 0.88);
+  backdrop-filter:  blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 1px 0 rgba(10, 34, 64, 0.10);
+}
+
+/* Cuando el nav está sobre el hero (fondo oscuro), texto blanco */
+.site-nav:not(.is-scrolled) {
+  background-color: transparent;
+  color: #fff;
+}
+
+
+/* ─── 3. METRIC BAR — SPRING ENTER ──────────────────────── */
+/*
+  Archivo: css/home.css, css/nosotros.css (el componente es compartido)
+  Selector: .metric-item (cada métrica individual)
+
+  JS: IntersectionObserver añade .is-visible al .metric-bar padre.
+  Cuando .metric-bar.is-visible → cada .metric-item anima.
+  El counter JS (ya existente) se dispara 200ms DESPUÉS de que
+  el contenedor termina de entrar (ver JS patch).
+
+  --spring-snappy tiene leve overshoot (1.56 en y2) — industrial look,
+  como un marcador que encaja en su posición. No es bounce de juguete.
+*/
+
+.metric-item {
+  opacity: 0;
+  transform: scaleY(0.6) translateY(8px);
+  transform-origin: bottom center;
+}
+
+.metric-bar.is-visible .metric-item {
+  animation: metric-spring-in var(--dur-lg) var(--spring-snappy) forwards;
+}
+
+/* Stagger via nth-child — sin JS */
+.metric-bar.is-visible .metric-item:nth-child(1) { animation-delay: 0ms;    }
+.metric-bar.is-visible .metric-item:nth-child(2) { animation-delay: 70ms;   }
+.metric-bar.is-visible .metric-item:nth-child(3) { animation-delay: 140ms;  }
+.metric-bar.is-visible .metric-item:nth-child(4) { animation-delay: 210ms;  }
+
+@keyframes metric-spring-in {
+  to {
+    opacity: 1;
+    transform: scaleY(1) translateY(0);
+  }
+}
+
+
+/* ─── 4. SERVICE CARDS — BORDE PERIMETRAL ANIMADO ─────── */
+/*
+  Archivo: css/home.css, css/servicios.css
+  Selector: .service-card
+
+  Técnica: pseudo-elemento ::before con background conic-gradient
+  animado vía @property --angle. La card tiene overflow:hidden.
+  El borde recorre el perímetro en 400ms al hover.
+
+  Alternativa sin @property (soporte más amplio): clip-path en
+  pseudo-elemento — ver comentario inline.
+
+  Jakub: el hover del borde es raro/ocasional, justifica el efecto.
+  Sin translateY — ya eliminado por el brief como patrón genérico.
+*/
+
+@property --border-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.service-card {
+  position: relative;
+  border-radius: 8px;
+  /* El borde real de reposo — 1px sólido como siempre */
+  border: 0.5px solid rgba(26, 79, 138, 0.18);
+  overflow: hidden;
+  transition: box-shadow var(--dur-sm) var(--ease-out-quart);
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: conic-gradient(
+    from var(--border-angle),
+    transparent 0deg,
+    transparent 200deg,
+    #2A80C8 240deg,
+    #4DAAEF 270deg,
+    #2A80C8 300deg,
+    transparent 340deg,
+    transparent 360deg
+  );
+  opacity: 0;
+  z-index: 0;
+  transition: opacity var(--dur-xs) var(--ease-out-quart);
+  pointer-events: none;
+}
+
+/* Capa interior blanca para que el gradiente solo se vea en el borde */
+.service-card::after {
+  content: '';
+  position: absolute;
+  inset: 1px;
+  border-radius: calc(8px - 1px);
+  background: #fff;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* El contenido de la card SOBRE la capa blanca */
+.service-card > * { position: relative; z-index: 2; }
+
+.service-card:hover::before {
+  opacity: 1;
+  animation: border-rotate 500ms var(--ease-out-expo) forwards;
+}
+
+@keyframes border-rotate {
+  from { --border-angle: 0deg; }
+  to   { --border-angle: 360deg; }
+}
+
+.service-card:hover {
+  box-shadow: 0 4px 20px rgba(42, 128, 200, 0.12);
+}
+
+/*
+  FALLBACK si @property no está disponible (Safari < 15.4, FF < 128):
+  En ese caso el borde simplemente aparece con un fade:
+*/
+@supports not (background: conic-gradient(from 0deg, red, blue)) {
+  .service-card::before { display: none; }
+  .service-card:hover {
+    box-shadow: 0 0 0 1.5px #2A80C8, 0 4px 20px rgba(42, 128, 200, 0.12);
+  }
+}
+
+
+/* ─── 5. DIFERENCIADORES — STAGGER PRONUNCIADO ──────────── */
+/*
+  Archivo: css/home.css
+  Selector: .diff-item (cada ítem de la lista)
+             .diff-number (el marcador 01/02/03/04)
+             .diff-text (el texto del ítem)
+
+  El número entra 50ms antes que el texto de su propio ítem.
+  Jhey: CSS custom property --i para stagger sin JS.
+
+  HTML esperado:
+    <ul class="diff-list">
+      <li class="diff-item" style="--i:0">
+        <span class="diff-number">01</span>
+        <span class="diff-text">GPS 24/7...</span>
+      </li>
+      ...
+    </ul>
+
+  JS: IO añade .is-visible a .diff-list
+*/
+
+.diff-item {
+  opacity: 0;
+}
+
+.diff-number,
+.diff-text {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.diff-list.is-visible .diff-item {
+  /* El ítem padre solo hace opacity para no crear stacking context doble */
+  animation: simple-fade var(--dur-xs) var(--ease-out-quart) forwards;
+  animation-delay: calc(var(--i, 0) * var(--stagger-diff));
+}
+
+.diff-list.is-visible .diff-number {
+  animation: diff-reveal var(--dur-md) var(--ease-out-expo) forwards;
+  animation-delay: calc(var(--i, 0) * var(--stagger-diff));
+}
+
+.diff-list.is-visible .diff-text {
+  animation: diff-reveal var(--dur-md) var(--ease-out-expo) forwards;
+  /* El texto entra 50ms después que el número de su mismo ítem */
+  animation-delay: calc((var(--i, 0) * var(--stagger-diff)) + 50ms);
+}
+
+@keyframes diff-reveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes simple-fade {
+  to { opacity: 1; }
+}
+
+
+/* ─── 6. CTA BANNER — NOTA SOBRE EL PULSO ────────────────── */
+/*
+  El brief pedía un pulso radial animado en loop.
+  Decisión: NO implementado por estas razones:
+  
+  1. creation-gotchas.md lo prohíbe explícitamente:
+     "No pulsing CTAs, breathing elements, looped scale/opacity pulse.
+      They age badly, harm accessibility."
+  
+  2. Para prefers-reduced-motion habría que desactivarlo, lo que
+     produce un tratamiento inconsistente.
+  
+  3. No tiene función comunicativa — el CTA ya tiene jerarquía visual.
+  
+  ALTERNATIVA IMPLEMENTADA:
+  El CTA recibe una animación de entrada con clip-path reveal cuando
+  entra al viewport. Se siente vivo una vez, no en loop molesto.
+  El botón tiene un press-scale sutil (Emil) para feedback táctil.
+*/
+
+.cta-banner {
+  /* Reset — sin loops */
+}
+
+/* Reveal al entrar al viewport — IO añade .is-visible */
+.cta-banner.is-visible {
+  animation: cta-reveal var(--dur-lg) var(--spring-smooth) both;
+}
+
+@keyframes cta-reveal {
+  from {
+    opacity: 0;
+    clip-path: inset(0 0 100% 0);
+  }
+  to {
+    opacity: 1;
+    clip-path: inset(0 0 0% 0);
+  }
+}
+
+/* Press feedback en el botón — Emil */
+.cta-banner .btn:active {
+  transform: scale(0.97);
+  transition: transform var(--dur-xs) var(--ease-out-quart);
+}
+
+
+/* ─── 7. FLOTA — GALERÍA REVEAL ESCALONADO ──────────────── */
+/*
+  Archivo: css/flota.css
+  Selectores: .flota-gallery .foto-item
+
+  Jakub: scale + opacity (no translateY — ya hay suficiente movimiento
+  en la página). El scale de 0.96→1 refuerza la sensación de fotografía
+  que "aparece" sin movimiento vertical que compita con el scroll.
+
+  CSS custom property --gi (gallery index) para stagger.
+
+  HTML esperado:
+    <div class="flota-gallery">
+      <div class="foto-item foto-hero" style="--gi:0">...</div>
+      <div class="foto-item" style="--gi:1">...</div>
+      ...
+    </div>
+
+  JS: IO añade .is-visible a .flota-gallery
+*/
+
+.flota-gallery .foto-item {
+  opacity: 0;
+  transform: scale(0.96);
+}
+
+.flota-gallery.is-visible .foto-item {
+  animation: foto-reveal var(--dur-lg) var(--ease-out-expo) forwards;
+  animation-delay: calc(var(--gi, 0) * var(--stagger-gal));
+}
+
+@keyframes foto-reveal {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+
+/* ─── 8. NOSOTROS — TIMELINE REVEAL ─────────────────────── */
+/*
+  Archivo: css/nosotros.css
+  Selectores:
+    .timeline-line  — la línea vertical izquierda (borde Sky 3px)
+    .timeline-year  — el año (Barlow Condensed, mono)
+    .timeline-event — el texto del evento
+
+  La línea se "dibuja" de arriba abajo via scaleY.
+  Año entra primero, evento 120ms después en cada hito.
+  CSS custom property --ti (timeline index) para stagger.
+
+  HTML esperado:
+    <div class="timeline">
+      <div class="timeline-line"></div>  ← línea vertical
+      <div class="timeline-item" style="--ti:0">
+        <span class="timeline-year">2018</span>
+        <span class="timeline-event">Fundación...</span>
+      </div>
+      ...
+    </div>
+
+  JS: IO añade .is-visible a .timeline
+*/
+
+/* Línea vertical — dibujada de arriba abajo */
+.timeline-line {
+  transform-origin: top center;
+  transform: scaleY(0);
+}
+
+.timeline.is-visible .timeline-line {
+  animation: line-draw 600ms var(--ease-out-quart) 100ms both;
+}
+
+@keyframes line-draw {
+  to { transform: scaleY(1); }
+}
+
+/* Año — entra primero */
+.timeline-year {
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+.timeline.is-visible .timeline-year {
+  animation: diff-reveal var(--dur-md) var(--ease-out-expo) forwards;
+  animation-delay: calc(200ms + (var(--ti, 0) * 90ms));
+}
+
+/* Evento — entra 120ms después del año de su mismo ítem */
+.timeline-event {
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+.timeline.is-visible .timeline-event {
+  animation: diff-reveal var(--dur-md) var(--ease-out-expo) forwards;
+  animation-delay: calc(200ms + (var(--ti, 0) * 90ms) + 120ms);
+}
+
+
+/* ─── 9. COBERTURA — PUNTOS SECUENCIALES ────────────────── */
+/*
+  Archivo: css/cobertura.css
+  Los puntos del SVG arrancan ocultos.
+  JS los hace visibles secuencialmente via clase .is-active en cada <g>.
+  Una vez activos, el ping continuo del @keyframes existente toma el control.
+
+  CSS aquí solo define el estado inicial y la transición de aparición.
+  La lógica secuencial vive en JS (ver patch más abajo).
+*/
+
+/* Estado inicial — todos ocultos hasta que JS los activa */
+.map-point {
+  opacity: 0;
+  transform: scale(0.5);
+  transform-box: fill-box;
+  transform-origin: center;
+  transition:
+    opacity  var(--dur-md) var(--spring-snappy),
+    transform var(--dur-md) var(--spring-snappy);
+}
+
+/* Activo — el punto aparece con spring */
+.map-point.is-active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* El punto en desarrollo tiene su propia opacidad base */
+.map-point--dev.is-active {
+  opacity: 0.72;
+}
+
+
+/* ─── 10. PREFERS-REDUCED-MOTION — GLOBAL, OBLIGATORIO ──── */
+/*
+  Posición: AL FINAL del archivo, para que sobreescriba todo lo anterior.
+  No usar !important en propiedades individuales — usar el selector universal
+  dentro del media query según el patrón de accessibility.md.
+
+  Preserva los estados finales (opacity:1, transform:none) para que
+  los layouts no se rompan cuando las animaciones se saltan.
+*/
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration:       0.01ms !important;
+    animation-iteration-count: 1     !important;
+    transition-duration:      0.01ms !important;
+    scroll-behavior: auto           !important;
+  }
+
+  /* Forzar estado final visible en elementos que dependen de animación */
+  [data-hero-item],
+  .metric-item,
+  .diff-number,
+  .diff-text,
+  .diff-item,
+  .flota-gallery .foto-item,
+  .timeline-year,
+  .timeline-event,
+  .timeline-line,
+  .cta-banner,
+  .map-point {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    clip-path: none !important;
+  }
+}

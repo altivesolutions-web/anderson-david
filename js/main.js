@@ -156,3 +156,89 @@
   });
 
 })();
+
+/* ─── MOTION PATCH — Ag.6 · Altive Solutions · 07/06/2026 ─── */
+document.addEventListener('DOMContentLoaded', () => {
+
+  /* A. NAVBAR — BLUR AL SCROLL */
+  const siteNav = document.querySelector('.navbar');
+  if (siteNav) {
+    let ticking = false;
+    const updateNav = () => {
+      siteNav.classList.toggle('is-scrolled', window.scrollY > 20);
+      ticking = false;
+    };
+    window.addEventListener('scroll', () => {
+      if (!ticking) { requestAnimationFrame(updateNav); ticking = true; }
+    }, { passive: true });
+    updateNav();
+  }
+
+  /* B. INTERSECTION OBSERVER GENÉRICO */
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        if (!entry.target.dataset.revealRepeat) observer.unobserve(entry.target);
+      } else if (entry.target.dataset.revealRepeat) {
+        entry.target.classList.remove('is-visible');
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+  ['.metric-bar', '.diff-list', '.flota-gallery', '.timeline', '.cta-banner']
+    .forEach(sel => document.querySelectorAll(sel).forEach(el => observer.observe(el)));
+
+  /* C. METRIC BAR — COUNTER CON DELAY */
+  document.querySelectorAll('.metric-bar').forEach((bar) => {
+    const mutObs = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.target.classList.contains('is-visible')) {
+          setTimeout(() => {
+            bar.querySelectorAll('[data-count]').forEach((el) => {
+              const target = parseInt(el.dataset.count, 10);
+              const suffix = el.dataset.suffix || '';
+              if (!isNaN(target)) animateCount(el, target, suffix);
+            });
+          }, 280);
+          mutObs.disconnect();
+        }
+      });
+    });
+    mutObs.observe(bar, { attributes: true, attributeFilter: ['class'] });
+  });
+
+  function animateCount(el, target, suffix = '', dur = 1200) {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      el.textContent = target + suffix; return;
+    }
+    const start = performance.now();
+    const update = (now) => {
+      const progress = Math.min((now - start) / dur, 1);
+      const eased = 1 - Math.pow(1 - progress, 4);
+      el.textContent = Math.round(target * eased) + (progress < 1 ? '' : suffix);
+      if (progress < 1) requestAnimationFrame(update);
+      else el.textContent = target + suffix;
+    };
+    requestAnimationFrame(update);
+  }
+
+  /* D. COBERTURA — PUNTOS SECUENCIALES */
+  const mapWrapper = document.querySelector('.cobertura-map-wrapper');
+  if (mapWrapper) {
+    const mapObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          ['#map-piura','#map-trujillo','#map-sierra','#map-lima','#map-sur']
+            .forEach((sel, i) => {
+              const point = entry.target.querySelector(sel);
+              if (point) setTimeout(() => point.classList.add('is-active'), i * 300);
+            });
+          mapObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3, rootMargin: '0px 0px -60px 0px' });
+    mapObserver.observe(mapWrapper);
+  }
+
+});
