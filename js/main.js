@@ -186,11 +186,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
 
-  ['.metric-bar', '.diff-list', '.flota-gallery', '.timeline', '.cta-banner']
+  ['.metrics-bar', '.diff-list', '.flota-gallery', '.timeline', '.cta-banner']
     .forEach(sel => document.querySelectorAll(sel).forEach(el => observer.observe(el)));
 
   /* C. METRIC BAR — COUNTER CON DELAY */
-  document.querySelectorAll('.metric-bar').forEach((bar) => {
+  document.querySelectorAll('.metrics-bar').forEach((bar) => {
     const mutObs = new MutationObserver((mutations) => {
       mutations.forEach((mutation) => {
         if (mutation.target.classList.contains('is-visible')) {
