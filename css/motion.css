@@ -39,10 +39,10 @@
   --dur-sm:   200ms;
   --dur-md:   340ms;
   --dur-lg:   480ms;
-  --dur-hero: 560ms;
+  --dur-hero: 620ms;
 
   /* Stagger increments */
-  --stagger-hero: 80ms;
+  --stagger-hero: 100ms;
   --stagger-diff: 100ms;
   --stagger-gal:  60ms;
   --stagger-map:  300ms;
@@ -81,6 +81,11 @@
 [data-hero-item="3"] { animation-delay: calc(var(--stagger-hero) * 3); }
 
 @keyframes hero-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+    filter: blur(4px);
+  }
   to {
     opacity: 1;
     transform: translateY(0);
@@ -301,9 +306,15 @@
 }
 
 @keyframes diff-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+    filter: blur(3px);
+  }
   to {
     opacity: 1;
     transform: translateY(0);
+    filter: blur(0px);
   }
 }
 
@@ -494,6 +505,37 @@
 }
 
 
+/* ─── CTA HOVER — translateY + transition ──────────────── */
+.btn {
+  transition:
+    transform var(--dur-sm) var(--ease-out-quart),
+    box-shadow var(--dur-sm) var(--ease-out-quart);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(10, 34, 64, 0.12);
+}
+
+.btn:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* ─── SERVICE-CARD HOVER — lift + shadow ───────────────── */
+.service-card {
+  transition:
+    transform var(--dur-sm) var(--ease-out-quart),
+    box-shadow var(--dur-sm) var(--ease-out-quart),
+    border-color var(--dur-sm) var(--ease-out-quart);
+}
+
+.service-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(42, 128, 200, 0.10);
+}
+
+
 /* ─── 10. PREFERS-REDUCED-MOTION — GLOBAL, OBLIGATORIO ──── */
 /*
   Posición: AL FINAL del archivo, para que sobreescriba todo lo anterior.
@@ -525,7 +567,9 @@
   .timeline-event,
   .timeline-line,
   .cta-banner,
-  .map-point {
+  .map-point,
+  .btn,
+  .service-card {
     opacity: 1 !important;
     transform: none !important;
     filter: none !important;
