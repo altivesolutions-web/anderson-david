@@ -160,9 +160,32 @@
 .fc-badge--gray  { background: #F4F5F7; color: #374151; }
 
 @media (max-width: 900px) {
-  .fc-grid { grid-template-columns: 1fr; }
-  .fc-card { border-right: none; border-bottom: 0.5px solid rgba(26,79,138,.18); }
+  .fc-grid {
+    grid-template-columns: 1fr;
+    border: none;
+    gap: var(--sp-4);
+    border-radius: 0;
+  }
+  .fc-card {
+    border-right: none;
+    border-bottom: none;
+    border: 0.5px solid rgba(26,79,138,.18);
+    border-radius: var(--r-lg);
+    padding: 24px 20px 20px;
+  }
   .fc-card:last-child { border-bottom: none; }
+}
+
+@media (max-width: 480px) {
+  .fc-grid {
+    gap: var(--sp-3);
+  }
+  .fc-card {
+    padding: 20px 16px 16px;
+  }
+  .fc-title {
+    font-size: 24px;
+  }
 }
 
 
@@ -182,6 +205,12 @@
   border-radius: var(--r-lg);
   background: var(--ad-ice);
   position: relative;
+}
+
+/* Base aspect-ratio on .foto-item — prevents collapse if image fails */
+.foto-item {
+  aspect-ratio: 4 / 3;
+  min-height: 0;
 }
 
 /* Foto grande — 7 cols de 12 */
@@ -229,28 +258,59 @@
   transform: scale(1.03);
 }
 
+/* Fallback — .foto-item when image is missing or fails to load */
+.foto-item:not(:has(img)),
+.foto-item:has(img[style*="display:none"]),
+.foto-item:has(img[style*="display: none"]) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--ad-ice) 0%, #dceef9 100%);
+  border: 1px dashed rgba(42,128,200,0.25);
+}
+
+.foto-item:not(:has(img))::after,
+.foto-item:has(img[style*="display:none"])::after,
+.foto-item:has(img[style*="display: none"])::after {
+  content: 'Foto no disponible';
+  font-family: var(--font-body);
+  font-size: var(--fs-xs);
+  color: var(--ad-slate);
+  opacity: 0.6;
+  text-align: center;
+  padding: var(--sp-4);
+}
+
+/* --- Gallery responsive: mobile 2 cols, desktop 3 cols ------------------- */
 @media (max-width: 767px) {
   .flota-gallery {
     grid-template-columns: 1fr 1fr;
+    gap: 6px;
   }
-  .foto-hero,
+  .foto-hero {
+    grid-column: 1 / 3;
+    aspect-ratio: 16 / 9;
+  }
   .foto-secondary {
     grid-column: 1 / 3;
     aspect-ratio: 16 / 9;
   }
   .foto-sq {
     grid-column: span 1;
+    aspect-ratio: 4 / 3;
   }
 }
 
 @media (max-width: 480px) {
   .flota-gallery {
     grid-template-columns: 1fr;
+    gap: 6px;
   }
   .foto-hero,
   .foto-secondary,
   .foto-sq {
     grid-column: 1;
+    aspect-ratio: 16 / 9;
   }
 }
 
