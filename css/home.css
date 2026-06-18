@@ -152,11 +152,42 @@
   flex-shrink: 0;
 }
 
-@media (max-width: 700px) {
-  .hero__title {
-    font-size: clamp(2.2rem, 10vw, 3rem);
+/* --- Fix 3: Hero mobile improvements ---- */
+@media (max-width: 767px) {
+  /* 3a — Overlay más fuerte en mobile para legibilidad */
+  .hero__overlay {
+    background: linear-gradient(
+      160deg,
+      rgba(10, 34, 64, 0.85) 0%,
+      rgba(10, 34, 64, 0.72) 50%,
+      rgba(10, 34, 64, 0.80) 100%
+    );
   }
 
+  /* 3b — Jerarquía tipográfica H1 mobile */
+  .hero__title {
+    font-size: clamp(2rem, 9vw, 2.8rem);
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+  }
+
+  .hero__subtitle {
+    font-size: var(--fs-base);
+    line-height: 1.6;
+  }
+
+  /* 3c — CTAs apilados fullwidth */
+  .hero__actions {
+    flex-direction: column;
+    gap: var(--sp-3);
+  }
+
+  .hero__actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* 3d — Métricas hero en 2 columnas mobile */
   .metrics-bar {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -188,18 +219,6 @@
   .metric-item__number {
     margin-bottom: 0;
     font-size: 1.8rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .hero__actions {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .hero__actions .btn {
-    width: 100%;
-    justify-content: center;
   }
 }
 
