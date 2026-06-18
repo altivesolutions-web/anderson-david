@@ -398,6 +398,51 @@
   }
 }
 
+/* --- Fix 9: Footer mobile — padding vertical, zonas táctiles ------------- */
+@media (max-width: 767px) {
+  .footer {
+    padding-top: var(--sp-12);
+    padding-bottom: var(--sp-6);
+  }
+
+  .footer__grid {
+    padding-bottom: var(--sp-8);
+  }
+
+  .footer__links {
+    gap: var(--sp-1);
+  }
+
+  .footer__links a {
+    padding: var(--sp-2) 0;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+
+  .footer__contact-item {
+    padding: var(--sp-2) 0;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+
+  .footer__contact-item a {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+
+  .footer__social-link {
+    width: 44px;
+    height: 44px;
+  }
+
+  .footer__bottom {
+    padding-top: var(--sp-5);
+  }
+}
+
 /* ─── Todos los links de navegación activos ─── */
 
 /* ─── Navbar blur al scroll — motion patch ─── */
