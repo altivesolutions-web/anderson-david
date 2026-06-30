@@ -326,6 +326,73 @@
   line-height: 1.55;
 }
 
+/* --- Fix 4a: Tabla → cards apiladas en mobile ----------------------------- */
+@media (max-width: 767px) {
+  .rutas-table-wrap {
+    overflow-x: visible;
+    box-shadow: none;
+  }
+
+  .rutas-table thead {
+    display: none;
+  }
+
+  .rutas-table,
+  .rutas-table tbody,
+  .rutas-table tr,
+  .rutas-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .rutas-table tr {
+    background: var(--ad-white);
+    border: 1px solid rgba(10,34,64,0.08);
+    border-radius: var(--r-lg);
+    padding: var(--sp-4) var(--sp-5);
+    margin-bottom: var(--sp-3);
+  }
+
+  .rutas-table tr:last-child {
+    margin-bottom: 0;
+  }
+
+  .rutas-table tbody tr:hover td {
+    background: transparent;
+  }
+
+  .rutas-table td {
+    padding: var(--sp-2) 0;
+    border-bottom: none;
+    text-align: left;
+  }
+
+  .rutas-table td::before {
+    content: attr(data-label);
+    display: block;
+    font-family: var(--font-display);
+    font-size: var(--fs-xs);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ad-slate);
+    margin-bottom: 2px;
+  }
+
+  .rutas-table td:first-child {
+    padding-top: 0;
+  }
+
+  .rutas-table td:last-child {
+    padding-bottom: 0;
+  }
+
+  .ruta-row--dev {
+    border-style: dashed;
+    opacity: 0.75;
+  }
+}
+
 /* --- CTA Banner ----------------------------------------------------------- */
 .cta-banner {
   padding-block: var(--sp-16);

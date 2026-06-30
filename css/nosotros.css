@@ -147,6 +147,37 @@
   }
 }
 
+/* --- Fix 7: Timeline mobile — lista numerada sin línea vertical ---------- */
+@media (max-width: 767px) {
+  .timeline-item {
+    border-left: none;
+    padding-left: 0;
+    padding: 12px 0;
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    gap: var(--sp-3);
+    align-items: start;
+  }
+
+  .timeline-item::before {
+    display: none;
+  }
+
+  .timeline-item:hover {
+    border-color: transparent;
+  }
+
+  .timeline-year {
+    font-size: 12px;
+    padding-top: 2px;
+    text-align: left;
+  }
+
+  .timeline-content {
+    font-size: var(--fs-sm);
+  }
+}
+
 
 /* --- Banda métricas Navy -------------------------------------------------- */
 .metrics-section {
@@ -284,26 +315,49 @@
 }
 
 @media (max-width: 767px) {
+  .clientes {
+    padding: 40px 0;
+  }
+
+  .clientes-titulo {
+    font-size: 20px;
+    margin-bottom: 24px;
+  }
+
+  .logo-rail {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    border-top: none;
+    border-bottom: none;
+    padding: 0;
+  }
+
   .logo-item {
-    padding: 10px 16px;
-    height: 60px;
+    width: 100%;
+    height: auto;
+    padding: 14px 0;
     border-right: none;
     border-bottom: 0.5px solid rgba(26,79,138,.12);
-    width: 50%;
+    justify-content: flex-start;
+    opacity: 0.7;
+    filter: grayscale(0);
   }
+
   .logo-item:nth-child(odd) {
-    border-right: 0.5px solid rgba(26,79,138,.12);
+    border-right: none;
   }
+
+  .logo-item:first-child {
+    border-top: 0.5px solid rgba(26,79,138,.12);
+  }
+
   .logo-item:last-child {
     border-bottom: none;
-    border-right: none;
-    width: 100%;
   }
+
   .logo-item svg {
-    height: 38px;
-  }
-  .clientes-titulo {
-    font-size: 22px;
+    height: 32px;
   }
 }
 

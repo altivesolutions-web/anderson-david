@@ -358,13 +358,15 @@
 @media (max-width: 500px) {
   .proceso-grid {
     grid-template-columns: 1fr;
+    gap: var(--sp-4);
   }
 
   .proceso-step {
     text-align: left;
     display: flex;
     align-items: flex-start;
-    gap: var(--sp-5);
+    gap: var(--sp-4);
+    padding: var(--sp-5);
   }
 
   .proceso-step__number {
@@ -373,7 +375,38 @@
   }
 
   .proceso-step__icon {
-    display: none;
+    display: flex;
+    width: 44px;
+    height: 44px;
+    margin-inline: 0;
+    margin-bottom: 0;
+    flex-shrink: 0;
+  }
+
+  .proceso-step__title {
+    font-size: var(--fs-base);
+    margin-bottom: var(--sp-2);
+  }
+
+  .proceso-step__desc {
+    font-size: var(--fs-sm);
+    line-height: 1.55;
+  }
+}
+
+/* --- Fix 8: Proceso mobile — iconos + breathing room ---- */
+@media (max-width: 767px) {
+  .proceso-grid {
+    gap: var(--sp-4);
+    margin-top: var(--sp-8);
+  }
+
+  .proceso-step {
+    padding: var(--sp-5);
+  }
+
+  .proceso-step__title {
+    margin-bottom: var(--sp-2);
   }
 }
 
