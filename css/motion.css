@@ -32,6 +32,7 @@
   --ease-out-quart:  cubic-bezier(0.25, 1, 0.5, 1);
   --ease-out-expo:   cubic-bezier(0.16, 1, 0.3, 1);
   --spring-snappy:   cubic-bezier(0.34, 1.56, 0.64, 1);  /* leve overshoot — industrial, no playful */
+  --spring-snappy-polished: cubic-bezier(0.32, 1.64, 0.62, 1); /* overshoot algo más perceptible (metric bar) */
   --spring-smooth:   cubic-bezier(0.22, 1, 0.36, 1);     /* sin overshoot — para elementos grandes */
 
   /* Duraciones base */
@@ -146,7 +147,8 @@
 }
 
 .metrics-bar.is-visible .metric-item {
-  animation: metric-spring-in var(--dur-lg) var(--spring-snappy) forwards;
+  /* Pulido 1c: overshoot algo más perceptible sin cruzar a rebote de juguete */
+  animation: metric-spring-in var(--dur-lg) var(--spring-snappy-polished) forwards;
 }
 
 /* Stagger via nth-child — sin JS */
@@ -320,6 +322,49 @@
 
 @keyframes simple-fade {
   to { opacity: 1; }
+}
+
+
+/* ─── 5b. DIFERENCIADORES — REVEAL PULIDO (SELECTORES REALES) ─────── */
+/*
+  El markup real usa .diff-list__item (grid marker + texto), no .diff-item.
+  Pulido 1b: cada ítem materializa con blur (patrón Jakub) escalonado por
+  la custom property --i ya presente en el HTML. JS añade .is-visible a
+  .diff-list (motion patch, observer B).
+*/
+
+.diff-list__item {
+  opacity: 0;
+}
+
+.diff-list.is-visible .diff-list__item {
+  animation: diff-reveal-polished var(--dur-md) var(--ease-out-expo) both;
+  animation-delay: calc(var(--i, 0) * var(--stagger-diff));
+}
+
+@keyframes diff-reveal-polished {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0px);
+  }
+}
+
+/* Marker (01/02/03/04) — hover sutil que invita sin distraer */
+.diff-list__marker {
+  transition:
+    color var(--dur-sm) var(--ease-out-quart),
+    transform var(--dur-sm) var(--ease-out-quart);
+}
+
+.diff-list__item:hover .diff-list__marker {
+  color: var(--ad-sky-dark);
+  transform: translateY(-2px);
 }
 
 
@@ -561,6 +606,7 @@
   .diff-number,
   .diff-text,
   .diff-item,
+  .diff-list__item,
   .flota-gallery .foto-item,
   .timeline-year,
   .timeline-event,
