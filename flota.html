@@ -201,74 +201,85 @@
           La flota en operación
         </h2>
 
-        <!--
-          INSTRUCCIÓN PROD: Reemplazar los placeholders con las fotos reales de Drive.
-          Usar las 5-6 de mayor KB (278-353KB) para las fotos principales.
-          Convertir a WebP con cwebp CLI: cwebp -q 82 -resize 1400 0 foto.jpg -o foto.webp
-          Colocar en assets/images/ y actualizar los src abajo.
-          Alt text descriptivo por cada foto.
-        -->
+        <!-- Fotos reales de Drive (paquete Ag.6/Ag.5), procesadas a WebP q82 + fallback
+             JPG con recorte cover en qa-scripts/process_photos.py. Assets en assets/flota/. -->
+
         <div class="flota-gallery" role="list">
 
           <!-- Fila 1: foto grande + foto secundaria -->
           <div class="flota-gallery__item foto-item foto-hero" style="--gi:0" role="listitem">
-            <img
-              src="assets/images/flota-01.jpg"
-              alt="Volquete Anderson David en ruta a la sierra liberteña"
-              width="900" height="506"
-              loading="eager"
-              fetchpriority="high"
-              style="width:100%;height:100%;object-fit:cover;display:block;border-radius:var(--r-lg);"
-              onerror="this.style.display='none'"
-            >
+            <picture>
+              <source srcset="assets/flota/foto-01.webp" type="image/webp">
+              <img
+                src="assets/flota/foto-01.jpg"
+                alt="Cargador frontal de la flota Anderson David en faena minera del norte del Perú"
+                width="1600" height="900"
+                loading="eager"
+                fetchpriority="high"
+                style="width:100%;height:100%;object-fit:cover;display:block;border-radius:var(--r-lg);"
+                onerror="this.style.display='none'"
+              >
+            </picture>
             <div class="foto-overlay">
-              <span class="foto-overlay__tag">Flota de transporte</span>
+              <span class="foto-overlay__tag">Línea amarilla</span>
             </div>
           </div>
 
           <div class="flota-gallery__item foto-item foto-secondary" style="--gi:1" role="listitem">
-            <img
-              src="assets/images/flota-02.jpg"
-              alt="Camión Anderson David en zona industrial El Milagro, Trujillo"
-              width="600" height="338"
-              loading="lazy"
-              style="width:100%;height:100%;object-fit:cover;display:block;border-radius:var(--r-lg);"
-              onerror="this.style.display='none'"
-            >
+            <picture>
+              <source srcset="assets/flota/foto-02.webp" type="image/webp">
+              <img
+                src="assets/flota/foto-02.jpg"
+                alt="Motoniveladora de la flota Anderson David nivelando terreno de obra"
+                width="1200" height="675"
+                loading="lazy"
+                style="width:100%;height:100%;object-fit:cover;display:block;border-radius:var(--r-lg);"
+                onerror="this.style.display='none'"
+              >
+            </picture>
           </div>
 
           <!-- Fila 2: 3 fotos iguales -->
           <div class="flota-gallery__item foto-item foto-sq" style="--gi:2" role="listitem">
-            <img
-              src="assets/images/flota-03.jpg"
-              alt="Cargador frontal línea amarilla Anderson David en boca de mina"
-              width="450" height="338"
-              loading="lazy"
-              style="width:100%;height:100%;object-fit:cover;display:block;border-radius:var(--r-lg);"
-              onerror="this.style.display='none'"
-            >
+            <picture>
+              <source srcset="assets/flota/foto-03.webp" type="image/webp">
+              <img
+                src="assets/flota/foto-03.jpg"
+                alt="Rodillo compactador CAT y volquete de la flota en obra de movimiento de tierra"
+                width="1000" height="750"
+                loading="lazy"
+                style="width:100%;height:100%;object-fit:cover;display:block;border-radius:var(--r-lg);"
+                onerror="this.style.display='none'"
+              >
+            </picture>
           </div>
 
           <div class="flota-gallery__item foto-item foto-sq" style="--gi:3" role="listitem">
-            <img
-              src="assets/images/flota-04.jpg"
-              alt="Volquete en ruta serrana con carga de cemento"
-              width="450" height="338"
-              loading="lazy"
-              style="width:100%;height:100%;object-fit:cover;display:block;border-radius:var(--r-lg);"
-              onerror="this.style.display='none'"
-            >
+            <picture>
+              <source srcset="assets/flota/foto-04.webp" type="image/webp">
+              <img
+                src="assets/flota/foto-04.jpg"
+                alt="Volquete Volvo y cargadores frontales de la flota en operación minera"
+                width="1000" height="750"
+                loading="lazy"
+                style="width:100%;height:100%;object-fit:cover;display:block;border-radius:var(--r-lg);"
+                onerror="this.style.display='none'"
+              >
+            </picture>
           </div>
 
           <div class="flota-gallery__item foto-item foto-sq" style="--gi:4" role="listitem">
-            <img
-              src="assets/images/flota-05.jpg"
-              alt="Plataforma de carga Anderson David en puerto de Salaverry"
-              width="450" height="338"
-              loading="lazy"
-              style="width:100%;height:100%;object-fit:cover;display:block;border-radius:var(--r-lg);"
-              onerror="this.style.display='none'"
-            >
+            <picture>
+              <source srcset="assets/flota/foto-05.webp" type="image/webp">
+              <img
+                src="assets/flota/foto-05.jpg"
+                alt="Cargador frontal Volvo descargando material sobre un volquete en faena"
+                width="1000" height="750"
+                loading="lazy"
+                style="width:100%;height:100%;object-fit:cover;display:block;border-radius:var(--r-lg);"
+                onerror="this.style.display='none'"
+              >
+            </picture>
           </div>
 
         </div>
