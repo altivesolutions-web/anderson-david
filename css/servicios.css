@@ -168,6 +168,27 @@
   text-align: center;
 }
 
+/* Media (foto real) dentro de una card — banner superior del body */
+.sv-card__media {
+  aspect-ratio: 16 / 10;
+  margin-bottom: var(--sp-6);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  background: var(--ad-ice);
+}
+
+.sv-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform var(--dur-lg) var(--ease-out);
+}
+
+.sv-card:hover .sv-card__media img {
+  transform: scale(1.03);
+}
+
 .sv-card__title {
   font-family: var(--font-display);
   font-size: clamp(var(--fs-xl), 2.5vw, var(--fs-3xl));
