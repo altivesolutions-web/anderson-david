@@ -26,19 +26,36 @@
   position: absolute;
   inset: 0;
   background-color: var(--ad-navy);
-  background-image: url('../assets/images/hero-flota.jpg');
+  /* Foto real de flota (WA0092, verificada por Ag.5). WebP con fallback JPG. */
+  background-image: image-set(
+    url('../assets/hero/hero-anderson-david.webp') type('image/webp'),
+    url('../assets/hero/hero-anderson-david.jpg') type('image/jpeg')
+  );
+  background-image: -webkit-image-set(
+    url('../assets/hero/hero-anderson-david.webp') type('image/webp'),
+    url('../assets/hero/hero-anderson-david.jpg') type('image/jpeg')
+  );
   background-size: cover;
-  background-position: center 40%;
+  background-position: center 45%;
+}
+
+/* Fallback para navegadores sin soporte de image-set */
+@supports not (background-image: image-set(url('x.webp') type('image/webp'))) {
+  .hero__bg-image {
+    background-image: url('../assets/hero/hero-anderson-david.jpg');
+  }
 }
 
 .hero__overlay {
   position: absolute;
   inset: 0;
+  /* Overlay más denso: la foto real tiene más detalle que el placeholder plano
+     — necesita más contraste para el texto y la metric bar inferior. */
   background: linear-gradient(
     160deg,
-    rgba(10, 34, 64, 0.72) 0%,
-    rgba(10, 34, 64, 0.55) 50%,
-    rgba(10, 34, 64, 0.65) 100%
+    rgba(10, 34, 64, 0.78) 0%,
+    rgba(10, 34, 64, 0.60) 48%,
+    rgba(10, 34, 64, 0.80) 100%
   );
   z-index: 1;
 }
