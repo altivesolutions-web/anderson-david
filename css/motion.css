@@ -189,7 +189,7 @@
 
 .service-card {
   position: relative;
-  border-radius: 8px;
+  border-radius: var(--r-md);
   /* El borde real de reposo — 1px sólido como siempre */
   border: 0.5px solid rgba(26, 79, 138, 0.18);
   overflow: hidden;
@@ -222,7 +222,7 @@
   content: '';
   position: absolute;
   inset: 1px;
-  border-radius: calc(8px - 1px);
+  border-radius: calc(var(--r-md) - 1px);
   background: #fff;
   z-index: 1;
   pointer-events: none;
@@ -580,6 +580,53 @@
 }
 
 
+/* ═══════════════════════════════════════════════════════════
+   ÁREA 4 — ANIMACIONES NUEVAS (ronda de pulido)
+   ═══════════════════════════════════════════════════════════ */
+
+/* ─── 4a. FOOTER — REVEAL AL ENTRAR AL VIEWPORT ─────────── */
+/*
+  Selector real: .footer (no .site-footer). Patrón seguro: NO se oculta el
+  footer por defecto — sólo se anima cuando JS añade .is-visible (observer
+  en main.js). Si JS no corre, el footer queda visible (contiene contacto).
+*/
+.footer.is-visible {
+  animation: footer-reveal var(--dur-reveal, 500ms) var(--ease-out-expo) both;
+}
+
+@keyframes footer-reveal {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── 4b. FORMULARIO DE CONTACTO — FEEDBACK DE ENVÍO ────── */
+/*
+  JS añade .is-loading al .form-submit-btn en el submit. El form hace POST
+  nativo a Formspree, así que el spinner acompaña la navegación.
+*/
+.form-submit-btn.is-loading {
+  pointer-events: none;
+  opacity: 0.75;
+}
+
+.form-submit-btn.is-loading::after {
+  content: '';
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  margin-left: 8px;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: btn-spin 700ms linear infinite;
+  vertical-align: middle;
+}
+
+@keyframes btn-spin {
+  to { transform: rotate(360deg); }
+}
+
+
 /* ─── 10. PREFERS-REDUCED-MOTION — GLOBAL, OBLIGATORIO ──── */
 /*
   Posición: AL FINAL del archivo, para que sobreescriba todo lo anterior.
@@ -614,10 +661,22 @@
   .cta-banner,
   .map-point,
   .btn,
-  .service-card {
+  .service-card,
+  .footer {
     opacity: 1 !important;
     transform: none !important;
     filter: none !important;
     clip-path: none !important;
+  }
+
+  /* 4c — logo rail: sin lift, pero conservando su estado de reposo dim */
+  .logo-item {
+    transform: none !important;
+  }
+
+  /* 4d — spinner de envío: sin giro y oculto en reduced-motion */
+  .form-submit-btn.is-loading::after {
+    animation: none !important;
+    display: none !important;
   }
 }

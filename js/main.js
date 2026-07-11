@@ -186,8 +186,17 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
 
-  ['.metrics-bar', '.diff-list', '.flota-gallery', '.timeline', '.cta-banner']
+  ['.metrics-bar', '.diff-list', '.flota-gallery', '.timeline', '.cta-banner', '.footer']
     .forEach(sel => document.querySelectorAll(sel).forEach(el => observer.observe(el)));
+
+  /* B2. FORMULARIO DE CONTACTO — FEEDBACK DE ENVÍO (Área 4b) */
+  const contactForm = document.querySelector('.contact-form');
+  if (contactForm) {
+    contactForm.addEventListener('submit', () => {
+      const btn = contactForm.querySelector('.form-submit-btn');
+      if (btn) btn.classList.add('is-loading');
+    });
+  }
 
   /* C. METRIC BAR — COUNTER CON DELAY */
   document.querySelectorAll('.metrics-bar').forEach((bar) => {

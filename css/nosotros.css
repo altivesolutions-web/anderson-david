@@ -322,7 +322,8 @@
   opacity: .5;
   filter: grayscale(1);
   transition: opacity 220ms cubic-bezier(.23,1,.32,1),
-              filter  220ms cubic-bezier(.23,1,.32,1);
+              filter  220ms cubic-bezier(.23,1,.32,1),
+              transform 220ms cubic-bezier(.23,1,.32,1);
 }
 
 .logo-item:last-child {
@@ -332,6 +333,7 @@
 .logo-item:hover {
   opacity: 1;
   filter: grayscale(0);
+  transform: translateY(-2px);
 }
 
 .logo-item svg {
