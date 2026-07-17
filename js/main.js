@@ -189,12 +189,58 @@ document.addEventListener('DOMContentLoaded', () => {
   ['.metrics-bar', '.diff-list', '.flota-gallery', '.timeline', '.cta-banner', '.footer']
     .forEach(sel => document.querySelectorAll(sel).forEach(el => observer.observe(el)));
 
-  /* B2. FORMULARIO DE CONTACTO — FEEDBACK DE ENVÍO (Área 4b) */
+  /* B2. FORMULARIO DE CONTACTO — ENVÍO AJAX + REDIRECT (Área 4b)
+     El redirect nativo de Formspree (_next) requiere plan de pago, así que en
+     plan free enviamos por AJAX (Accept: application/json) y hacemos nosotros el
+     redirect a gracias.html al recibir OK. Reply-To lo aporta el campo name="email". */
   const contactForm = document.querySelector('.contact-form');
   if (contactForm) {
-    contactForm.addEventListener('submit', () => {
-      const btn = contactForm.querySelector('.form-submit-btn');
-      if (btn) btn.classList.add('is-loading');
+    const submitBtn = contactForm.querySelector('.form-submit-btn');
+    const statusBox = contactForm.querySelector('.form-status');
+    const WHATSAPP = '952 656 820';
+
+    const showError = (message) => {
+      if (statusBox) {
+        statusBox.textContent = message;
+        statusBox.hidden = false;
+      }
+      if (submitBtn) {
+        submitBtn.classList.remove('is-loading');
+        submitBtn.disabled = false;
+      }
+    };
+
+    contactForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (statusBox) statusBox.hidden = true;
+      if (submitBtn) {
+        submitBtn.classList.add('is-loading');
+        submitBtn.disabled = true;
+      }
+
+      try {
+        const response = await fetch(contactForm.action, {
+          method: 'POST',
+          body: new FormData(contactForm),
+          headers: { Accept: 'application/json' }
+        });
+
+        if (response.ok) {
+          window.location.href = 'gracias.html';
+          return;
+        }
+
+        let message = 'No se pudo enviar el formulario. Vuelva a intentarlo o escríbanos por WhatsApp al ' + WHATSAPP + '.';
+        try {
+          const data = await response.json();
+          if (data && Array.isArray(data.errors) && data.errors.length) {
+            message = data.errors.map((err) => err.message).join(' ');
+          }
+        } catch (_) { /* respuesta sin cuerpo JSON */ }
+        showError(message);
+      } catch (_) {
+        showError('Hubo un problema de conexión. Vuelva a intentarlo o escríbanos por WhatsApp al ' + WHATSAPP + '.');
+      }
     });
   }
 

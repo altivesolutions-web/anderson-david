@@ -281,6 +281,18 @@
   font-size: var(--fs-md);
 }
 
+.form-status {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border-radius: var(--r-md);
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
+  line-height: 1.5;
+  background: rgba(220, 38, 38, 0.08);
+  border: 1.5px solid #DC2626;
+  color: #B91C1C;
+}
+
 .form-privacy {
   font-family: var(--font-body);
   font-size: var(--fs-xs);
