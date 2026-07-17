@@ -158,22 +158,25 @@
           </div>
 
           <!--
-            INSTRUCCIÓN PROD: Formspree
-            1. Ir a formspree.io, crear cuenta con corporacion.andersondavid@gmail.com
-            2. Crear nuevo form → obtener ID (ej: xpzgwqrk)
-            3. Reemplazar el action abajo: action="https://formspree.io/f/[ID]"
-            4. Validar que llegan correos antes de la entrega al cliente
+            Formspree — Contacto Web · andersondavid.pe
+            Cuenta (Altive): altivesolutions+andersondavid@gmail.com  ·  Endpoint: https://formspree.io/f/mkodjljr
+            · Envío por AJAX (ver js/main.js, bloque B2): en el plan free el redirect nativo
+              de Formspree (_next) es función de pago, por eso el redirect a gracias.html lo
+              hacemos por JS tras recibir respuesta OK.
+            · Reply-To: lo aporta automáticamente el campo name="email" (no hace falta _replyto).
+            · Notificaciones: destino final contacto@andersondavid.pe (pendiente de verificación
+              en Formspree; hasta entonces llegan a altivesolutions+andersondavid@gmail.com).
           -->
           <form
             class="contact-form"
-            action="https://formspree.io/f/REEMPLAZAR_ID"
+            action="https://formspree.io/f/mkodjljr"
             method="POST"
             novalidate
             data-reveal
             data-reveal-delay="80"
           >
-            <!-- Redirect a página de gracias -->
-            <input type="hidden" name="_next" value="https://andersondavid.pe/gracias.html">
+            <!-- Asunto de la notificación por email -->
+            <input type="hidden" name="_subject" value="Nueva solicitud de cotización — andersondavid.pe">
             <!-- Anti-spam honeypot -->
             <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
 
@@ -234,6 +237,7 @@
             </div>
 
             <div class="form-submit">
+              <p class="form-status" role="alert" aria-live="polite" hidden></p>
               <button type="submit" class="btn btn--primary form-submit-btn">
                 Enviar solicitud de cotización
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
