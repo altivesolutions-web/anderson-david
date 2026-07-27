@@ -75,7 +75,9 @@
   });
 
   /* --- IntersectionObserver reveal ------------------------- */
-  const revealElements = document.querySelectorAll('[data-reveal]');
+  /* Incluye los triggers del rediseño Servicios iter.2 (wipe s2 / line-draw s3):
+     mismo observer, mismo callback (add .is-visible una sola vez). */
+  const revealElements = document.querySelectorAll('[data-reveal], [data-reveal-wipe], [data-draw-route]');
 
   if (revealElements.length && 'IntersectionObserver' in window) {
     const observer = new IntersectionObserver(
@@ -294,6 +296,24 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }, { threshold: 0.3, rootMargin: '0px 0px -60px 0px' });
     mapObserver.observe(mapWrapper);
+  }
+
+  /* E. SERVICIOS iter.2 — PARALLAX celda 01 (código nuevo: scroll continuo, no un toggle).
+     Los reveal wipe (s2) / line-draw (s3) usan el IntersectionObserver existente del primer IIFE. */
+  const parallaxLayer = document.querySelector('[data-parallax-layer]');
+  if (parallaxLayer && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const parallaxCell = document.querySelector('[data-parallax]');
+    let pTicking = false;
+    function updateParallax() {
+      const rect = parallaxCell.getBoundingClientRect();
+      const progress = (window.innerHeight - rect.top) / (window.innerHeight + rect.height);
+      const offset = Math.max(-1, Math.min(1, progress)) * 30;
+      parallaxLayer.style.transform = `translateY(${offset}px)`;
+      pTicking = false;
+    }
+    window.addEventListener('scroll', () => {
+      if (!pTicking) { requestAnimationFrame(updateParallax); pTicking = true; }
+    }, { passive: true });
   }
 
 });

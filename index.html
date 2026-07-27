@@ -276,61 +276,63 @@
     </section>
 
     <!-- =========================================================
-         SERVICIOS (rediseño Ag.6 · 07/2026)
+         SERVICIOS (rediseño Ag.6 iter.2 · bento asimétrico + GPS transversal · 07/2026)
          ========================================================= -->
     <section class="servicios" id="servicios" aria-labelledby="servicios-heading">
       <div class="servicios__intro">
         <span class="servicios__eyebrow">Qué hacemos</span>
         <h2 id="servicios-heading" class="servicios__heading">Soluciones de transporte para operaciones corporativas exigentes</h2>
       </div>
-      <div class="servicios__body">
-        <figure class="servicios__photo">
-          <img src="assets/images/servicios-flota.jpg" loading="lazy" class="servicios__photo-img"
-               alt="Maquinaria pesada —cargador frontal— en una operación de carga en cantera">
-          <div class="servicios__photo-overlay" aria-hidden="true"></div>
-          <figcaption class="servicios__photo-chip">
-            <span class="servicios__photo-chip-value">28</span>
-            <span class="servicios__photo-chip-label">unidades en flota</span>
-          </figcaption>
-        </figure>
-        <ol class="servicios__manifest">
-          <li class="servicios__row" data-reveal>
-            <span class="servicios__row-index">01</span>
-            <span class="servicios__row-icon" aria-hidden="true"><svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="7" width="20" height="16" rx="1.5"/><path d="M4 12h20"/><path d="M14 12v11"/><path d="M4 7l4-4h12l4 4"/></svg></span>
-            <div class="servicios__row-copy">
-              <h3 class="servicios__row-title">Transporte de carga general</h3>
-              <p class="servicios__row-desc">Mercadería en contenedores, pallets o carga suelta con guías de remisión y SUNAT en regla. Cobertura a nivel nacional.</p>
-            </div>
-            <a href="servicios.html#general" class="servicios__row-link">Ver detalle<span aria-hidden="true"> →</span></a>
-          </li>
-          <li class="servicios__row" data-reveal>
-            <span class="servicios__row-index">02</span>
-            <span class="servicios__row-icon" aria-hidden="true"><svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 5h18"/><path d="M14 5v9"/><path d="M11 14a3 3 0 0 0 6 0"/><path d="M14 17v2"/><rect x="8" y="19" width="12" height="5" rx="1"/></svg></span>
-            <div class="servicios__row-copy">
-              <h3 class="servicios__row-title">Carga pesada e industrial</h3>
-              <p class="servicios__row-desc">Maquinaria, equipos industriales y cargas de gran tonelaje. Grúas y equipos de maniobra disponibles para carga/descarga.</p>
-            </div>
-            <a href="servicios.html#industrial" class="servicios__row-link">Ver detalle<span aria-hidden="true"> →</span></a>
-          </li>
-          <li class="servicios__row" data-reveal>
-            <span class="servicios__row-index">03</span>
-            <span class="servicios__row-icon" aria-hidden="true"><svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="21" r="2"/><circle cx="14" cy="8" r="2"/><circle cx="23" cy="21" r="2"/><path d="M6.6 19.6L12.6 9.8"/><path d="M15.4 9.8L21.4 19.6"/></svg></span>
-            <div class="servicios__row-copy">
-              <h3 class="servicios__row-title">Distribución regional</h3>
-              <p class="servicios__row-desc">Rutas periódicas Lima, Trujillo, sierra liberteña y operaciones locales en Piura. Programación semanal con ventanas horarias definidas.</p>
-            </div>
-            <a href="servicios.html#regional" class="servicios__row-link">Ver detalle<span aria-hidden="true"> →</span></a>
-          </li>
-          <li class="servicios__row" data-reveal>
-            <span class="servicios__row-index">04</span>
-            <span class="servicios__row-icon" aria-hidden="true"><svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="14" cy="20" r="1.7" fill="currentColor" stroke="none"/><path d="M9.5 15.5a6.5 6.5 0 0 1 9 0"/><path d="M6 12a10.5 10.5 0 0 1 16 0"/></svg></span>
-            <div class="servicios__row-copy">
-              <h3 class="servicios__row-title">Transporte con monitoreo</h3>
-              <p class="servicios__row-desc">Servicio premium con rastreo GPS en tiempo real, reportes de posición y alertas automáticas por desvío de ruta.</p>
-            </div>
-            <a href="servicios.html#monitoreo" class="servicios__row-link">Ver detalle<span aria-hidden="true"> →</span></a>
-          </li>
-        </ol>
+
+      <div class="servicios__gps-band">
+        <span class="servicios__gps-dot" aria-hidden="true"></span>
+        <p class="servicios__gps-text">Todos nuestros servicios incluyen rastreo GPS en tiempo real, reportes de posición y alertas automáticas por desvío de ruta.</p>
+      </div>
+
+      <div class="servicios__grid">
+        <article class="servicios__cell servicios__cell--s1" data-parallax>
+          <div class="servicios__cell-photo">
+            <img src="assets/images/servicios-s1-carga-general.jpg" loading="lazy" class="servicios__cell-img" data-parallax-layer
+                 alt="Camiones de carga de Anderson David en patio de acopio">
+            <div class="servicios__cell-overlay" aria-hidden="true"></div>
+            <span class="servicios__cell-chip"><strong>28</strong> unidades en flota</span>
+          </div>
+          <div class="servicios__cell-copy">
+            <span class="servicios__cell-index">01</span>
+            <h3 class="servicios__cell-title">Transporte de carga general</h3>
+            <p class="servicios__cell-desc">Mercadería en contenedores, pallets o carga suelta con guías de remisión y SUNAT en regla. Cobertura a nivel nacional.</p>
+            <a href="servicios.html#general" class="servicios__cell-link">Ver detalle<span aria-hidden="true"> →</span></a>
+          </div>
+        </article>
+
+        <article class="servicios__cell servicios__cell--s2" data-reveal-wipe>
+          <div class="servicios__cell-photo servicios__cell-photo--top">
+            <img src="assets/images/servicios-s2-carga-pesada.jpg" loading="lazy" class="servicios__cell-img"
+                 alt="Cargador frontal y maquinaria pesada en operación de carga en cantera">
+            <div class="servicios__cell-overlay--bottom" aria-hidden="true"></div>
+          </div>
+          <div class="servicios__cell-copy servicios__cell-copy--solid">
+            <span class="servicios__cell-index">02</span>
+            <h3 class="servicios__cell-title">Carga pesada e industrial</h3>
+            <p class="servicios__cell-desc">Maquinaria, equipos industriales y cargas de gran tonelaje. Grúas y equipos de maniobra disponibles para carga/descarga.</p>
+            <a href="servicios.html#industrial" class="servicios__cell-link">Ver detalle<span aria-hidden="true"> →</span></a>
+          </div>
+        </article>
+
+        <article class="servicios__cell servicios__cell--s3" data-draw-route>
+          <div class="servicios__cell-copy" style="background:transparent;padding:0;">
+            <span class="servicios__cell-index">03</span>
+            <h3 class="servicios__cell-title">Distribución regional</h3>
+            <p class="servicios__cell-desc">Rutas periódicas Lima, Trujillo, sierra liberteña y operaciones locales en Piura. Programación semanal con ventanas horarias definidas.</p>
+            <a href="servicios.html#regional" class="servicios__cell-link">Ver detalle<span aria-hidden="true"> →</span></a>
+          </div>
+          <svg class="servicios__route-svg" viewBox="0 0 200 140" aria-hidden="true">
+            <circle cx="20" cy="115" r="4" fill="currentColor"/>
+            <circle cx="100" cy="30" r="4" fill="currentColor"/>
+            <circle cx="180" cy="115" r="4" fill="currentColor"/>
+            <path class="servicios__route-path" d="M20 115 L100 30 L180 115" fill="none" stroke="currentColor" stroke-width="2"/>
+          </svg>
+        </article>
       </div>
     </section>
 
