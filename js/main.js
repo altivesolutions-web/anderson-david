@@ -75,9 +75,9 @@
   });
 
   /* --- IntersectionObserver reveal ------------------------- */
-  /* Incluye los triggers del rediseño Servicios iter.2 (wipe s2 / line-draw s3):
+  /* Incluye los triggers de reveal del rediseño Servicios (wipe de s2 y s3):
      mismo observer, mismo callback (add .is-visible una sola vez). */
-  const revealElements = document.querySelectorAll('[data-reveal], [data-reveal-wipe], [data-draw-route]');
+  const revealElements = document.querySelectorAll('[data-reveal], [data-reveal-wipe]');
 
   if (revealElements.length && 'IntersectionObserver' in window) {
     const observer = new IntersectionObserver(
