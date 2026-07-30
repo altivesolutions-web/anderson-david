@@ -141,13 +141,14 @@
 
         <div class="section-header" data-reveal>
           <h2 class="section-title" id="sv-title">
-            Cuatro modalidades de transporte
+            Tres servicios, cobertura nacional
           </h2>
         </div>
 
         <!-- Servicio 1: Carga general -->
-        <article class="sv-card" id="general" data-reveal>
+        <article class="sv-card" id="general" data-reveal style="--accent: var(--ad-navy);">
           <div class="sv-card__icon-col">
+            <span class="sv-card__num">01</span>
             <div class="sv-card__icon-wrap sv-card__icon-wrap--navy">
               <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <rect x="1" y="3" width="15" height="13" rx="1"/>
@@ -199,8 +200,9 @@
         </article>
 
         <!-- Servicio 2: Carga industrial -->
-        <article class="sv-card sv-card--reverse" id="industrial" data-reveal>
+        <article class="sv-card sv-card--reverse" id="industrial" data-reveal style="--accent: var(--ad-sky);">
           <div class="sv-card__icon-col">
+            <span class="sv-card__num">02</span>
             <div class="sv-card__icon-wrap sv-card__icon-wrap--blue">
               <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/>
@@ -210,15 +212,6 @@
           </div>
 
           <div class="sv-card__body">
-            <figure class="sv-card__media">
-              <picture>
-                <source srcset="assets/servicios/mineria.webp" type="image/webp">
-                <img src="assets/servicios/mineria.jpg"
-                  alt="Flota de volquetes Anderson David y cargador CAT en operación de carga pesada"
-                  width="1280" height="800" loading="lazy"
-                  onerror="this.closest('.sv-card__media').style.display='none'">
-              </picture>
-            </figure>
             <h3 class="sv-card__title">Carga pesada e industrial</h3>
             <p class="sv-card__desc">
               Transporte especializado para maquinaria, equipos industriales y cargas de
@@ -258,8 +251,9 @@
         </article>
 
         <!-- Servicio 3: Distribución regional -->
-        <article class="sv-card" id="regional" data-reveal>
+        <article class="sv-card" id="regional" data-reveal style="--accent: var(--ad-amber);">
           <div class="sv-card__icon-col">
+            <span class="sv-card__num">03</span>
             <div class="sv-card__icon-wrap sv-card__icon-wrap--amber">
               <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
@@ -306,56 +300,22 @@
           </div>
         </article>
 
-        <!-- Servicio 4: Monitoreo GPS -->
-        <article class="sv-card sv-card--reverse" id="monitoreo" data-reveal>
-          <div class="sv-card__icon-col">
-            <div class="sv-card__icon-wrap sv-card__icon-wrap--sky">
-              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
-                <circle cx="12" cy="9" r="2.5"/>
-              </svg>
-            </div>
-            <div class="sv-card__badge badge badge--amber">Premium</div>
-          </div>
-
-          <div class="sv-card__body">
-            <h3 class="sv-card__title">Transporte con monitoreo GPS</h3>
-            <p class="sv-card__desc">
-              Servicio premium con rastreo satelital en tiempo real visible para el cliente.
-              Incluye reportes de posición por intervalo configurable, alertas por desvío
-              de ruta y acceso a historial de recorrido. Pensado para empresas que manejan
-              carga de alto valor o que reportan a auditores externos.
-            </p>
-
-            <div class="sv-card__features">
-              <div class="sv-feature">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                Rastreo en tiempo real 24/7
-              </div>
-              <div class="sv-feature">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                Alertas automáticas por desvío de ruta
-              </div>
-              <div class="sv-feature">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                Reporte de historial de recorrido
-              </div>
-              <div class="sv-feature">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                Acceso al panel para el cliente
-              </div>
-            </div>
-
-            <div class="sv-card__footer">
-            <a href="https://wa.me/51952656820?text=Hola,%20me%20interesa%20el%20servicio%20con%20monitoreo%20GPS"
-               class="btn btn--primary"
-               target="_blank" rel="noopener noreferrer">
-              Cotizar este servicio
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
-            </a>
+                <!-- GPS transversal — caracteristica incluida en todos los servicios, no producto aparte -->
+        <aside class="sv-gps" data-reveal aria-labelledby="sv-gps-title">
+          <div class="sv-gps__head">
+            <span class="sv-gps__dot" aria-hidden="true"></span>
+            <div>
+              <h3 class="sv-gps__title" id="sv-gps-title">Monitoreo GPS en todos nuestros servicios</h3>
+              <p class="sv-gps__lead">No es un extra premium: cada unidad de nuestra flota incluye rastreo satelital en tiempo real, sin costo adicional.</p>
             </div>
           </div>
-        </article>
+          <ul class="sv-gps__features">
+            <li class="sv-gps__feature"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Rastreo en tiempo real 24/7</li>
+            <li class="sv-gps__feature"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Alertas automáticas por desvío de ruta</li>
+            <li class="sv-gps__feature"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Historial de recorrido disponible</li>
+            <li class="sv-gps__feature"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Panel de seguimiento para el cliente</li>
+          </ul>
+        </aside>
 
       </div>
     </section>
