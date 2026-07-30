@@ -287,14 +287,14 @@
   background: var(--ad-navy);
   border-left: 4px solid var(--ad-amber);
   border-radius: var(--r-xl);
-  padding: clamp(var(--sp-7), 3vw, var(--sp-10));
+  padding: clamp(var(--sp-6), 3vw, var(--sp-10)); /* --sp-7 no existe en tokens -> clamp invalido -> padding:0; uso --sp-6 (valido) */
   color: #fff;
 }
 .sv-gps__head {
   display: flex;
   align-items: flex-start;
   gap: var(--sp-4);
-  margin-bottom: var(--sp-6);
+  margin-bottom: var(--sp-8);
 }
 .sv-gps__dot {
   position: relative;
